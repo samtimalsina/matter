@@ -1,0 +1,14 @@
+.system-breadcrumb {
+  line-height: 24px;
+  .material-icons {
+    font-size: 12px;
+  }
+  a {
+    text-decoration: none;
+    color: #999;
+    &:hover {
+      text-decoration: underline;
+      color: #333;
+    }
+  }
+}

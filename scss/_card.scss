@@ -1,0 +1,25 @@
+.mdc-card__media {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.system-theme-cards {
+  .mdc-card__primary {
+    position: relative;
+    .mdc-menu-anchor {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+    }
+  }
+}
+
+.theme-default .mdc-card {
+  background-color: var(--mdc-theme-primary, #0277bd);
+}
+
+.theme-admin .mdc-card{
+  background-color: var(--mdc-theme-accent, #64dd17);
+}

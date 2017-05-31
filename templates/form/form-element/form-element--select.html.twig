@@ -1,0 +1,7 @@
+{% extends "form-element.html.twig" %}
+{% set attributes = attributes.addClass('mdc-select') %}
+{% set label_display = false %}
+{% set description_classes = ['mdc-typography--caption'] %}
+{% if description %}
+  {% set description = description|merge(description.attributes.addClass(description_classes)) %}
+{% endif %}

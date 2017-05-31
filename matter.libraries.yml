@@ -1,0 +1,24 @@
+global-styling:
+  version: VERSION
+  css:
+    base:
+      css/matter.css: {}
+  js:
+    js/matter.js: {}
+  dependencies:
+    - matter/fonts
+    - matter/material-component-web
+
+material-component-web:
+  css:
+    theme:
+      css/material-component-web.css: {}
+
+fonts:
+  license:
+    name: Apache License
+    url: https://github.com/google/roboto/blob/master/LICENSE
+  css:
+    theme:
+      '//fonts.googleapis.com/css?family=Roboto:300,400,500,700': {type: external}
+      '//fonts.googleapis.com/icon?family=Material+Icons': {type: external}

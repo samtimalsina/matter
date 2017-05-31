@@ -1,0 +1,22 @@
+body.toolbar-tray-open {
+  header.mdc-toolbar--fixed {
+    top: 80px;
+  }
+  aside.mdc-temporary-drawer {
+    padding-top: 80px;
+  }
+  main.matter-main {
+    margin-top: 32px;
+  }
+}
+
+.header-with-favorites {
+  display: inline-flex;
+  .shortcuts-menu {
+    margin-left: 12px;
+  }
+  .mdc-icon-toggle {
+    width: 24px;
+    height: 24px;
+  }
+}

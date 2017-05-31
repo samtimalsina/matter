@@ -1,0 +1,10 @@
+@import "~@material/animation/mdc-animation";
+
+.toggle-item {
+  height: 0;
+  overflow: hidden;
+  &.toggle-item--show {
+    height: auto;
+    animation: height 175ms $mdc-animation-linear-out-slow-in-timing-function;
+  }
+}

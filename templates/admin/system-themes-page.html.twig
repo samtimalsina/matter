@@ -1,0 +1,84 @@
+{#
+/**
+ * @file
+ * Theme override for the Appearance page.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the main container.
+ * - theme_groups: A list of theme groups. Each theme group contains:
+ *   - attributes: HTML attributes specific to this theme group.
+ *   - title: Title for the theme group.
+ *   - state: State of the theme group, e.g. installed or uninstalled.
+ *   - themes: A list of themes within the theme group. Each theme contains:
+ *     - attributes: HTML attributes specific to this theme.
+ *     - screenshot: A screenshot representing the theme.
+ *     - description: Description of the theme.
+ *     - name: Theme name.
+ *     - version: The theme's version number.
+ *     - is_default: Boolean indicating whether the theme is the default theme
+ *       or not.
+ *     - is_admin: Boolean indicating whether the theme is the admin theme or
+ *       not.
+ *     - notes: Identifies what context this theme is being used in, e.g.,
+ *       default theme, admin theme.
+ *     - incompatible: Text describing any compatibility issues.
+ *     - operations: A list of operation links, e.g., Settings, Enable, Disable,
+ *       etc. these links should only be displayed if the theme is compatible.
+ *
+ * @see template_preprocess_system_themes_page()
+ */
+#}
+<div{{ attributes }}>
+  {% for theme_group in theme_groups %}
+    {%
+      set theme_group_classes = [
+        'mdc-layout-grid', 'system-theme-cards'
+      ]
+    %}
+    <h3>{{ theme_group.title }}</h3>
+    <div{{ theme_group.attributes.addClass(theme_group_classes) }}>
+      {% for theme in theme_group.themes %}
+        {%
+          set theme_classes = [
+            theme.is_default ? 'mdc-card--theme-dark theme-default',
+            theme.is_admin ? 'mdc-card--theme-dark theme-admin',
+            'mdc-layout-grid__cell',
+          ]
+        %}
+        <div {{ theme.attributes.addClass(theme_classes) }}>
+          <div class="mdc-card">
+            <section class="mdc-card__primary">
+              <h1 class="mdc-card__title">{{- theme.name }} {{ theme.version -}}</h1>
+              <h2 class="mdc-card__subtitle">
+                {% if theme.notes %}
+                  ({{ theme.notes|safe_join(', ') }})
+                {%- endif -%}
+              </h2>
+              {% if theme.incompatible %}
+                <div class="incompatible">{{ theme.incompatible }}</div>
+              {% else %}
+                {% spaceless %}
+                  <!-- Right aligned menu below button -->
+                  <div class="mdc-menu-anchor dropbutton-wrapper">
+                    <i class="icon-button icon--button-dropbutton material-icons" role="button" aria-pressed="false">more_vert</i>
+                    <div class="mdc-simple-menu" tabindex="-1">
+                      {{ theme.operations }}
+                    </div>
+                  </div>
+                {% endspaceless %}
+              {% endif %}
+            </section>
+            <section class="mdc-card__media">
+              {% if theme.screenshot %}
+                {{ theme.screenshot }}
+              {% endif %}
+            </section>
+            <section class="mdc-card__supporting-text">
+              {{ theme.description }}
+            </section>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>

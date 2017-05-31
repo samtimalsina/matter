@@ -1,0 +1,28 @@
+type: theme
+base theme: false
+core: 8.x
+base theme: stable
+
+name: Matter
+description: Admin theme built on top of Google's Material Components for the Web
+
+regions:
+  header: Header
+  tabs: Main Tabs
+  sub_tabs: Sub Tabs
+  drawer: Drawer
+  pre_content: Pre-content
+  breadcrumb: Breadcrumb
+  help: Help
+  content: Content
+regions_hidden:
+  - sidebar_first
+  - sidebar_second
+  - footer
+
+libraries:
+  - matter/global-styling
+
+libraries-override:
+  contextual/drupal.contextual-links: false
+  core/drupal.dropbutton: false

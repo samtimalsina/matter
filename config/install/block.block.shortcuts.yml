@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - shortcut
+  theme:
+    - matter
+id: shortcuts
+theme: matter
+region: drawer
+weight: -3
+provider: null
+plugin: shortcuts
+settings:
+  id: shortcuts
+  label: Shortcuts
+  provider: shortcut
+  label_display: '0'
+visibility: {  }

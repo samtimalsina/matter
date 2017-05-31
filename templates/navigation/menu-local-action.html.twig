@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Theme override for a single local action link.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper element.
+ * - link: A rendered link element.
+ *
+ * @see template_preprocess_menu_local_action()
+ */
+#}
+<button class="mdc-fab material-icons" aria-label="Add" onClick="window.location.href = '{{ url }}';">
+  <span class="mdc-fab__icon">add</span>
+</button>

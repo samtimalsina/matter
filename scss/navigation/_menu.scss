@@ -1,0 +1,23 @@
+@import "menu__account";
+@import "breadcrumb";
+@import "dropbutton";
+
+.toolbar-page_tabs {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+aside.mdc-persistent-drawer {
+  margin-top: 64px;
+}
+
+.mdc-toolbar-top {
+  z-index: 2;
+}
+
+.icon-button {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}

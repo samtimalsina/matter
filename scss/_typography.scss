@@ -1,0 +1,16 @@
+a {
+  color: rgb(13,71,161);
+  text-decoration: none;
+}
+
+
+p, .has-styled-links {
+  a {
+    border-bottom: .08em solid rgba(0,0,0,.1);
+    padding-bottom: .08em;
+    &:hover {
+      text-decoration: none;
+      border-bottom-color: rgb(13,71,161);
+    }
+  }
+}

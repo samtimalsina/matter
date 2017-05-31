@@ -1,0 +1,40 @@
+{
+  "name": "drupal-matter",
+  "version": "0.0.1",
+  "private": true,
+  "main": "webpack.config.js",
+  "keywords": [
+    "drupal",
+    "material-ui"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "cross-env": "^5.0.0",
+    "css-loader": "^0.28.1",
+    "del-cli": "^1.0.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "material-components-web": "^0.11.1",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.5",
+    "sass-loader": "^6.0.5",
+    "style-loader": "^0.17.0",
+    "webpack": "^2.5.1"
+  },
+  "scripts": {
+    "watch": "webpack --progress --colors --watch",
+    "build": "mkdirp build && webpack --progress --colors",
+    "build:min": "mkdirp build && cross-env MDC_ENV=production webpack -p --progress --colors",
+    "clean": "del-cli build/**",
+    "dist": "npm run clean && npm run build && npm run build:min"
+  },
+  "caches": {
+    "libraries": ".libraries"
+  },
+  "paths": {
+    "css": "css",
+    "js": "js",
+    "libraries": "lib"
+  },
+  "dependencies": {}
+}

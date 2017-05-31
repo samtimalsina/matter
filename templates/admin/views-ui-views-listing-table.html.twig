@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Theme override for views listing table.
+ *
+ * Available variables:
+ * - headers: Contains table headers.
+ * - rows: Contains multiple rows. Each row contains:
+ *   - view_name: The human-readable name of the view.
+ *   - machine_name: Machine name of the view.
+ *   - description: The description of the view.
+ *   - displays: List of displays attached to the view.
+ *   - operations: List of available operations.
+ *
+ * @see template_preprocess_views_ui_views_listing_table()
+ */
+#}
+<table{{ attributes.addClass('mdl-data-table mdl-js-data-table mdl-shadow--2dp') }}>
+  <thead>
+    <tr>
+      <th>View Name</th>
+      <th>Description</th>
+      <th>Operations</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in rows %}
+      <tr{{ row.attributes }}>
+        <td class="views-ui-view-name">
+          <h4>{{ row.data.view_name.data }}</h4>
+          <div class="views-ui-view-displays">Displays: <em>{{ row.data.displays.data }}</em></div>
+          <div class="views-ui-view-machine-name">Machine name: <em>{{ row.data.machine_name.data }}</em></div>
+        </td>
+        <td class="views-ui-view-description" data-drupal-selector="views-table-filter-text-source">
+          {{ row.data.description.data }}
+        </td>
+        <td class="views-ui-view-operations">
+          {{ row.data.operations.data }}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

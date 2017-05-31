@@ -1,0 +1,8 @@
+third_party_settings:
+  shortcut:
+    module_link: true
+matter_color_primary: '#0D47A1'
+matter_color_accent: '#689F38'
+matter_color_background: '#EEEEEE'
+matter_persistent_helptext: true
+matter_checkbox_to_toggle: true

@@ -1,0 +1,18 @@
+.system--branding {
+  .mdc-temporary-drawer__header-content {
+    display: block;
+  }
+  .mdc-typography--title, .mdc-typography--caption {
+    margin: 0;
+  }
+  a {
+    text-decoration: none;
+    color: #FFF;
+  }
+}
+
+.branding--logo {
+  max-width: 288px;
+  max-height: 84px;
+  height: auto;
+}
