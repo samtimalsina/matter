@@ -1,4 +1,4 @@
-import * as mdc from 'material-components-web/dist/material-components-web';
+const mdc = window.mdc || false;
 
 // Auto Initialize elements that have been defined in the templates.
 mdc.autoInit();

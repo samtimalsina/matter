@@ -146,6 +146,33 @@ function matter_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $f
 }
 
 /**
+ * Implements hook_library_info_alter().
+ */
+function matter_library_info_alter(&$libraries, $extension) {
+  if(theme_get_setting('matter_should_use_custom_cdn')) {
+    $cdn_css = theme_get_setting('matter_library_css');
+    $cdn_js = theme_get_setting('matter_library_js');
+
+    if (!empty($cdn_css) && !empty($cdn_js)) {
+      $libraries['matter/material-components-web'] = [
+        'js' => [
+          $cdn_js => [
+            'external' => TRUE,
+          ],
+        ],
+        'css' => [
+          'theme' => [
+            $cdn_css => [
+              'external' => TRUE,
+            ],
+          ],
+        ],
+      ];
+    }
+  }
+}
+
+/**
  * Implements template_preprocess_page().
  */
 function matter_preprocess_page(array &$variables) {

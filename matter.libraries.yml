@@ -7,12 +7,14 @@ global-styling:
     js/matter.js: {}
   dependencies:
     - matter/fonts
-    - matter/material-component-web
+    - matter/material-components-web
 
-material-component-web:
+material-components-web:
   css:
     theme:
-      css/material-component-web.css: {}
+      //unpkg.com/material-components-web@latest/dist/material-components-web.min.css: {type: external, , minified: true}
+  js:
+    //unpkg.com/material-components-web@latest/dist/material-components-web.min.js: {type: external, minified: true}
 
 fonts:
   license:

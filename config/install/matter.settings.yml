@@ -6,3 +6,6 @@ matter_color_accent: '#689F38'
 matter_color_background: '#EEEEEE'
 matter_persistent_helptext: true
 matter_checkbox_to_toggle: true
+matter_should_use_custom_cdn: false
+matter_library_css:
+matter_library_js:

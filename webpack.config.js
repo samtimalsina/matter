@@ -54,15 +54,35 @@ const CSS_LOADER_CONFIG = [
 
 module.exports = [
   {
-    name: 'js-components',
-    entry: {
-      matter: [
-        path.resolve('./app/matter.js'),
-      ]
-    },
+    name: 'material-js',
+    entry: path.resolve(node, "material-components-web/index.js"),
     output: {
       path: JS_PATH,
-      filename: '[name].js',
+      filename: 'material-components-web.js',
+      libraryTarget: 'umd',
+      library: 'mdc',
+    },
+    devServer: {
+      disableHostCheck: true,
+    },
+    devtool: IS_DEV ? 'source-map' : false,
+    module: {
+      rules: [{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          cacheDirectory: true,
+        },
+      }],
+    }
+  },
+  {
+    name: 'js-components',
+    entry: path.resolve('./app/matter.js'),
+    output: {
+      path: JS_PATH,
+      filename: 'matter.js',
     },
     devServer: {
       disableHostCheck: true,
@@ -85,7 +105,7 @@ module.exports = [
   {
     name: 'css',
     entry: {
-      'material-component-web': [
+      'material-components-web': [
         path.resolve(node, "material-components-web/material-components-web.scss"),
       ],
       matter: [
