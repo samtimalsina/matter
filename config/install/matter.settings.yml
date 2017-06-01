@@ -9,3 +9,4 @@ matter_checkbox_to_toggle: true
 matter_should_use_custom_cdn: false
 matter_library_css:
 matter_library_js:
+matter_hide_exposed_form: true

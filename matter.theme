@@ -180,3 +180,12 @@ function matter_preprocess_page(array &$variables) {
   $variables['theme_color_accent'] = theme_get_setting('matter_color_accent');
   $variables['theme_color_background'] = theme_get_setting('matter_color_background');
 }
+
+/**
+ * Implements template_preprocess_views_exposed_form().
+ */
+function matter_preprocess_views_exposed_form(array &$variables) {
+  if(theme_get_setting('matter_hide_exposed_form')) {
+    $variables['hide_exposed_form'] = TRUE;
+  }
+}

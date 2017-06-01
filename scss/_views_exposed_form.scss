@@ -1,0 +1,23 @@
+@import "~@material/animation/mdc-animation";
+
+form.views-exposed-form {
+  margin-bottom: 20px;
+  .toggle-form {
+    max-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    border-radius: 3px;
+    animation: max-height 175ms $mdc-animation-linear-out-slow-in-timing-function;
+    &.toggle-form--show {
+      max-height: 500px;
+      height: auto;
+      background: #eee;
+      padding: 10px 20px;
+    }
+    > div {
+      margin-right: 10px;
+    }
+  }
+}

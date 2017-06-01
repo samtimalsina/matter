@@ -6,6 +6,9 @@
  * Available variables:
  * - form: A render element representing the form.
  *
+ * Theme variables:
+ * - hide_exposed_form: A boolean indicating whether to hide the exposed form
+ *
  * @see template_preprocess_views_exposed_form()
  */
 #}
@@ -16,4 +19,22 @@
   #}
 {{ q }}
 {% endif %}
-{{ form }}
+{%
+set classes = [
+  'toggle-form',
+  'mdc-elevation--z2',
+  not hide_exposed_form ? 'toggle-form--show'
+]
+%}
+{% if hide_exposed_form %}
+  <span class="mdc-icon-toggle material-icons" role="button" aria-pressed="false"
+        aria-label="View Exposed Form" tabindex="0"
+        data-toggle-on='{"label": "Hide Filters", "content": "arrow_drop_up"}'
+        data-toggle-off='{"label": "Display Filters", "content": "filter_list"}'>
+    arrow_drop_up
+  </span>
+
+{% endif %}
+<div class="{{ classes|join(' ') }}">
+  {{ form }}
+</div>

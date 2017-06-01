@@ -103,4 +103,20 @@ function matter_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormS
     '#default_value' => theme_get_setting('matter_library_js'),
     '#description' => t('URL of the Material Web Component JavaScript.'),
   );
+
+  $form['material_widgets'] = array(
+    '#type' => 'details',
+    '#title' => t('Widgets'),
+    '#weight' => 4,
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#group' => 'matter',
+  );
+
+  $form['material_widgets']['matter_hide_exposed_form'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Hide Views Exposed Form by default.'),
+    '#default_value' => theme_get_setting('matter_hide_exposed_form'),
+    '#description' => t('Hide Views Exposed Form and add a toggle button.'),
+  );
 }
