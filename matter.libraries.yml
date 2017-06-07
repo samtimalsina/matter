@@ -12,7 +12,7 @@ global-styling:
 material-components-web:
   css:
     theme:
-      //unpkg.com/material-components-web@latest/dist/material-components-web.min.css: {type: external, , minified: true}
+      //unpkg.com/material-components-web@latest/dist/material-components-web.min.css: {type: external, minified: true}
   js:
     //unpkg.com/material-components-web@latest/dist/material-components-web.min.js: {type: external, minified: true}
 
