@@ -10,8 +10,10 @@
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
+    "commitizen": "^2.9.6",
     "cross-env": "^5.0.0",
     "css-loader": "^0.28.1",
+    "cz-conventional-changelog": "^2.0.0",
     "del-cli": "^1.0.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "material-components-web": "^0.11.1",
@@ -26,7 +28,8 @@
     "build": "mkdirp build && webpack --progress --colors",
     "build:min": "mkdirp build && cross-env MDC_ENV=production webpack -p --progress --colors",
     "clean": "del-cli build/**",
-    "dist": "npm run clean && npm run build && npm run build:min"
+    "dist": "npm run clean && npm run build && npm run build:min",
+    "commit": "git-cz"
   },
   "caches": {
     "libraries": ".libraries"
@@ -36,5 +39,10 @@
     "js": "js",
     "libraries": "lib"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }

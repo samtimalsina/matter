@@ -24,3 +24,11 @@ fonts:
     theme:
       '//fonts.googleapis.com/css?family=Roboto:300,400,500,700': {type: external}
       '//fonts.googleapis.com/icon?family=Material+Icons': {type: external}
+
+drupal.tabledrag:
+  js:
+    js/misc/tabledrag.js: {}
+
+drupal.tableselect:
+  js:
+    js/misc/tableselect.js: {}

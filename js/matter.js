@@ -124,7 +124,7 @@
       FormWrapper.classList.toggle('toggle-form--show', detail.isOn);
     });
   }
-})(window.mdc, window.Drupal, window.drupalSettings);
+})(window.mdc, Drupal, drupalSettings);
 
 /***/ })
 /******/ ]);

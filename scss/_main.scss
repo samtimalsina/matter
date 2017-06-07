@@ -12,6 +12,11 @@ html {
   box-sizing: border-box;
   height: 100%;
   width: 100%;
+  padding-top: 64px;
+}
+
+aside.mdc-temporary-drawer {
+  padding-top: 64px;
 }
 
 /* A simple menu button. */
@@ -34,7 +39,6 @@ html {
   flex-grow: 1;
   height: 100%;
   box-sizing: border-box;
-  margin-top: 64px;
   background-color: #EEEEEE;
 }
 

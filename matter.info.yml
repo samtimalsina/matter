@@ -26,3 +26,8 @@ libraries:
 libraries-override:
   contextual/drupal.contextual-links: false
   core/drupal.dropbutton: false
+  core/drupal.tableselect: matter/drupal.tableselect
+
+libraries-extend:
+  core/drupal.tabledrag:
+    - matter/drupal.tabledrag

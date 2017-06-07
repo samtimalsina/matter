@@ -53,30 +53,30 @@ const CSS_LOADER_CONFIG = [
 ];
 
 module.exports = [
-  {
-    name: 'material-js',
-    entry: path.resolve(node, "material-components-web/index.js"),
-    output: {
-      path: JS_PATH,
-      filename: 'material-components-web.js',
-      libraryTarget: 'umd',
-      library: 'mdc',
-    },
-    devServer: {
-      disableHostCheck: true,
-    },
-    devtool: IS_DEV ? 'source-map' : false,
-    module: {
-      rules: [{
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          cacheDirectory: true,
-        },
-      }],
-    }
-  },
+  // {
+  //   name: 'material-js',
+  //   entry: path.resolve(node, "material-components-web/index.js"),
+  //   output: {
+  //     path: JS_PATH,
+  //     filename: 'material-components-web.js',
+  //     libraryTarget: 'umd',
+  //     library: 'mdc',
+  //   },
+  //   devServer: {
+  //     disableHostCheck: true,
+  //   },
+  //   devtool: IS_DEV ? 'source-map' : false,
+  //   module: {
+  //     rules: [{
+  //       test: /\.js$/,
+  //       exclude: /node_modules/,
+  //       loader: 'babel-loader',
+  //       options: {
+  //         cacheDirectory: true,
+  //       },
+  //     }],
+  //   }
+  // },
   {
     name: 'js-components',
     entry: path.resolve('./app/matter.js'),
@@ -105,9 +105,9 @@ module.exports = [
   {
     name: 'css',
     entry: {
-      'material-components-web': [
-        path.resolve(node, "material-components-web/material-components-web.scss"),
-      ],
+      // 'material-components-web': [
+      //   path.resolve(node, "material-components-web/material-components-web.scss"),
+      // ],
       matter: [
         path.resolve('./scss/matter.scss'),
       ]

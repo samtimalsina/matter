@@ -1,3 +1,5 @@
+@import "~@material/elevation/mixins";
+
 $data-table-font-size: inherit;
 $data-table-header-font-size: 1em !default;
 $data-table-header-sort-icon-size: 16px !default;
@@ -132,4 +134,26 @@ $data-table-cell-top: $data-table-card-padding / 2;
 
 .mdl-data-table td, .mdl-data-table th {
   text-align: left;
+}
+
+.tabledrag-toggle-weight {
+  float: right;
+  margin-right: -12px;
+}
+
+
+form.vbo-hide {
+  .form-wrapper {
+    display: none;
+  }
+}
+form.vbo-elevated {
+  > .form-wrapper {
+    @include mdc-elevation(2);
+    padding: 20px;
+    background: #eeeeee;
+    z-index: 501;
+    position: fixed;
+    margin-top: -130px;
+  }
 }

@@ -1,6 +1,7 @@
 @import "menu__account";
 @import "breadcrumb";
 @import "dropbutton";
+@import "~@material/ripple/mixins";
 
 .toolbar-page_tabs {
   position: absolute;
@@ -20,4 +21,7 @@ aside.mdc-persistent-drawer {
   width: 24px;
   height: 24px;
   cursor: pointer;
+  @include mdc-ripple-base;
+  @include mdc-ripple-bg((pseudo: "::before"));
+  @include mdc-ripple-fg((pseudo: "::after"));
 }

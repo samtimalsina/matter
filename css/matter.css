@@ -56,20 +56,13 @@ body.toolbar-tray-open header.mdc-toolbar--fixed {
   top: 80px; }
 
 body.toolbar-tray-open aside.mdc-temporary-drawer {
-  padding-top: 80px; }
+  padding-top: 144px; }
 
 body.toolbar-tray-open main.matter-main {
   margin-top: 32px; }
 
-.header-with-favorites {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex; }
-  .header-with-favorites .shortcuts-menu {
-    margin-left: 12px; }
-  .header-with-favorites .mdc-icon-toggle {
-    width: 24px;
-    height: 24px; }
+header.mdc-toolbar--fixed {
+  z-index: 501; }
 
 /* Ensure layout covers the entire screen. */
 html {
@@ -88,7 +81,11 @@ html {
   margin: 0;
   box-sizing: border-box;
   height: 100%;
-  width: 100%; }
+  width: 100%;
+  padding-top: 64px; }
+
+aside.mdc-temporary-drawer {
+  padding-top: 64px; }
 
 /* A simple menu button. */
 .matter-menu {
@@ -116,7 +113,6 @@ html {
           flex-grow: 1;
   height: 100%;
   box-sizing: border-box;
-  margin-top: 64px;
   background-color: #EEEEEE; }
 
 .matter-main {
@@ -155,6 +151,92 @@ html {
       text-decoration: underline;
       color: #333; }
 
+/*
+  Precomputed linear color channel values, for use in contrast calculations.
+  See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+
+  Algorithm, for c in 0 to 255:
+  f(c) {
+    c = c / 255;
+    return c < 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  }
+
+  This lookup table is needed since there is no `pow` in SASS.
+*/
+/**
+ * Calculate the luminance for a color.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Calculate the contrast ratio between two colors.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Determine whether to use dark or light text on top of given color.
+ * Returns "dark" for dark text and "light" for light text.
+ */
+/*
+  Main theme colors.
+  If you're a user customizing your color scheme in SASS, these are probably the only variables you need to change.
+*/
+/* Indigo 500 */
+/* Pink A200 */
+/* White */
+/* Which set of text colors to use for each main theme color (light or dark) */
+/* Text colors according to light vs dark and text type */
+/* Primary text colors for each of the theme colors */
+/** MDC Ripple keyframes are split into their own file so that _mixins.scss can rely on them. */
+@-webkit-keyframes mdc-ripple-fg-radius-in {
+  from {
+    -webkit-transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);
+            transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);
+    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+  to {
+    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));
+            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); } }
+@keyframes mdc-ripple-fg-radius-in {
+  from {
+    -webkit-transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);
+            transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);
+    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+  to {
+    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));
+            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); } }
+
+@-webkit-keyframes mdc-ripple-fg-opacity-in {
+  from {
+    opacity: 0;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear; }
+  to {
+    opacity: 1; } }
+
+@keyframes mdc-ripple-fg-opacity-in {
+  from {
+    opacity: 0;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear; }
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes mdc-ripple-fg-opacity-out {
+  from {
+    opacity: 1;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear; }
+  to {
+    opacity: 0; } }
+
+@keyframes mdc-ripple-fg-opacity-out {
+  from {
+    opacity: 1;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear; }
+  to {
+    opacity: 0; } }
+
 .toolbar-page_tabs {
   position: absolute;
   right: 0;
@@ -169,11 +251,143 @@ aside.mdc-persistent-drawer {
 .icon-button {
   width: 24px;
   height: 24px;
-  cursor: pointer; }
+  cursor: pointer;
+  --mdc-ripple-surface-width: 0;
+  --mdc-ripple-surface-height: 0;
+  --mdc-ripple-fg-size: 0;
+  --mdc-ripple-left: 0;
+  --mdc-ripple-top: 0;
+  --mdc-ripple-fg-scale: 1;
+  --mdc-ripple-fg-translate-end: 0;
+  --mdc-ripple-fg-translate-start: 0;
+  will-change: transform, opacity;
+  -webkit-tap-highlight-color: transparent; }
+  .icon-button:not(.mdc-ripple-upgraded):hover::before, .icon-button:not(.mdc-ripple-upgraded):focus::before, .icon-button:not(.mdc-ripple-upgraded):active::after {
+    transition-duration: 85ms;
+    opacity: .6; }
+  .icon-button::before {
+    background-color: rgba(0, 0, 0, 0.06);
+    position: absolute;
+    top: calc(50% - 100%);
+    left: calc(50% - 100%);
+    width: 200%;
+    height: 200%;
+    transition: opacity 250ms linear;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    content: ""; }
+  .icon-button.mdc-ripple-upgraded::before {
+    top: calc(50% - 100%);
+    left: calc(50% - 100%);
+    width: 200%;
+    height: 200%;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
+            transform: scale(var(--mdc-ripple-fg-scale, 0)); }
+  .icon-button.mdc-ripple-upgraded--background-focused::before {
+    opacity: .99999; }
+  .icon-button.mdc-ripple-upgraded--background-active-fill::before {
+    transition-duration: 120ms;
+    opacity: 1; }
+  .icon-button.mdc-ripple-upgraded--unbounded::before {
+    top: calc(50% - 50%);
+    top: var(--mdc-ripple-top, calc(50% - 50%));
+    left: calc(50% - 50%);
+    left: var(--mdc-ripple-left, calc(50% - 50%));
+    width: 100%;
+    width: var(--mdc-ripple-fg-size, 100%);
+    height: 100%;
+    height: var(--mdc-ripple-fg-size, 100%);
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
+            transform: scale(var(--mdc-ripple-fg-scale, 0)); }
+  .icon-button::after {
+    background-color: rgba(0, 0, 0, 0.06);
+    position: absolute;
+    top: calc(50% - 100%);
+    left: calc(50% - 100%);
+    width: 200%;
+    height: 200%;
+    transition: opacity 250ms linear;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    content: ""; }
+  .icon-button.mdc-ripple-upgraded::after {
+    top: 0;
+    left: 0;
+    width: 100%;
+    width: var(--mdc-ripple-fg-size, 100%);
+    height: 100%;
+    height: var(--mdc-ripple-fg-size, 100%);
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: center center;
+            transform-origin: center center;
+    opacity: 0; }
+  .icon-button:not(.mdc-ripple-upgraded--unbounded)::after {
+    -webkit-transform-origin: center center;
+            transform-origin: center center; }
+  .icon-button.mdc-ripple-upgraded--unbounded::after {
+    top: 0;
+    top: var(--mdc-ripple-top, 0);
+    left: 0;
+    left: var(--mdc-ripple-left, 0);
+    width: 100%;
+    width: var(--mdc-ripple-fg-size, 100%);
+    height: 100%;
+    height: var(--mdc-ripple-fg-size, 100%);
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: center center;
+            transform-origin: center center; }
+  .icon-button.mdc-ripple-upgraded--foreground-activation::after {
+    -webkit-animation: 300ms mdc-ripple-fg-radius-in forwards, 83ms mdc-ripple-fg-opacity-in forwards;
+            animation: 300ms mdc-ripple-fg-radius-in forwards, 83ms mdc-ripple-fg-opacity-in forwards; }
+  .icon-button.mdc-ripple-upgraded--foreground-deactivation::after {
+    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));
+            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));
+    -webkit-animation: 250ms mdc-ripple-fg-opacity-out;
+            animation: 250ms mdc-ripple-fg-opacity-out; }
 
 .mdc-select select {
   display: none; }
 
+/**
+ * The css property used for elevation. In most cases this should not be changed. It is exposed
+ * as a variable for abstraction / easy use when needing to reference the property directly, for
+ * example in a `will-change` rule.
+ */
+/**
+ * The default duration value for elevation transitions.
+ */
+/**
+ * The default easing value for elevation transitions.
+ */
+/**
+ * Applies the correct css rules to an element to give it the elevation specified by $z-value.
+ * The $z-value must be between 0 and 24.
+ */
+/**
+ * Returns a string that can be used as the value for a `transition` property for elevation.
+ * Calling this function directly is useful in situations where a component needs to transition
+ * more than one property.
+ *
+ * ```scss
+ * .foo {
+ *   transition: mdc-elevation-transition-rule(), opacity 100ms ease;
+ *   will-change: $mdc-elevation-property, opacity;
+ * }
+ * ```
+ */
+/**
+ * Applies the correct css rules needed to have an element transition between elevations.
+ * This mixin should be applied to elements whose elevation values will change depending on their
+ * context (e.g. when active or disabled).
+ */
 .mdl-data-table {
   position: relative;
   border-collapse: collapse;
@@ -243,6 +457,21 @@ aside.mdc-persistent-drawer {
 .mdl-data-table td, .mdl-data-table th {
   text-align: left; }
 
+.tabledrag-toggle-weight {
+  float: right;
+  margin-right: -12px; }
+
+form.vbo-hide .form-wrapper {
+  display: none; }
+
+form.vbo-elevated > .form-wrapper {
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  padding: 20px;
+  background: #eeeeee;
+  z-index: 501;
+  position: fixed;
+  margin-top: -130px; }
+
 a {
   color: #0d47a1;
   text-decoration: none; }
@@ -266,9 +495,44 @@ p a, .has-styled-links a {
   -webkit-animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
           animation-timing-function: cubic-bezier(0.4, 0, 1, 1); }
 
+/**
+ * The css property used for elevation. In most cases this should not be changed. It is exposed
+ * as a variable for abstraction / easy use when needing to reference the property directly, for
+ * example in a `will-change` rule.
+ */
+/**
+ * The default duration value for elevation transitions.
+ */
+/**
+ * The default easing value for elevation transitions.
+ */
+/**
+ * Applies the correct css rules to an element to give it the elevation specified by $z-value.
+ * The $z-value must be between 0 and 24.
+ */
+/**
+ * Returns a string that can be used as the value for a `transition` property for elevation.
+ * Calling this function directly is useful in situations where a component needs to transition
+ * more than one property.
+ *
+ * ```scss
+ * .foo {
+ *   transition: mdc-elevation-transition-rule(), opacity 100ms ease;
+ *   will-change: $mdc-elevation-property, opacity;
+ * }
+ * ```
+ */
+/**
+ * Applies the correct css rules needed to have an element transition between elevations.
+ * This mixin should be applied to elements whose elevation values will change depending on their
+ * context (e.g. when active or disabled).
+ */
 form.views-exposed-form {
   margin-bottom: 20px; }
+  form.views-exposed-form .mdc-icon-toggle {
+    float: right; }
   form.views-exposed-form .toggle-form {
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
     max-height: 0;
     overflow: hidden;
     display: -webkit-box;
@@ -285,7 +549,7 @@ form.views-exposed-form {
     form.views-exposed-form .toggle-form.toggle-form--show {
       max-height: 500px;
       height: auto;
-      background: #eee;
+      background: #F5F5F2;
       padding: 10px 20px; }
     form.views-exposed-form .toggle-form > div {
       margin-right: 10px; }

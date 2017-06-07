@@ -31,6 +31,8 @@
  * @see template_preprocess_links()
  */
 #}
+{% import _self as dropbutton %}
+
 {% if links -%}
   {%- if heading -%}
     {%- if heading.level -%}
@@ -39,17 +41,30 @@
       <h2{{ heading.attributes }}>{{ heading.text }}</h2>
     {%- endif -%}
   {%- endif -%}
-  <ul{{ attributes }}>
+  <span{{ attributes.addClass('mdc-menu-anchor dropbutton-wrapper') }}>
     {%- for item in links -%}
-      <li{{ item.attributes }}>
-        {%- if item.link -%}
-          {{ item.link }}
-        {%- elseif item.text_attributes -%}
-          <span{{ item.text_attributes }}>{{ item.text }}</span>
-        {%- else -%}
-          {{ item.text }}
-        {%- endif -%}
-      </li>
+      {%  if loop.first %}
+        {{ dropbutton.link(item, false) }}
+        <i class="icon-button icon--button-dropbutton material-icons" role="button" aria-pressed="false">expand_more</i>
+        <div class="mdc-simple-menu" tabindex="-1">
+          <div class="mdc-simple-menu__items mdc-list">
+      {% elseif loop.last %}
+        {{ dropbutton.link(item, true) }}
+          </div>
+        </div>
+      {% else %}
+        {{ dropbutton.link(item, true) }}
+      {% endif %}
     {%- endfor -%}
-  </ul>
+  </span>
 {%- endif %}
+
+{% macro link(item, subClass) %}
+  {%- if item.link -%}
+    {{ item.link.addClass(subClass ? 'mdc-list-item') }}
+  {%- elseif item.text_attributes -%}
+    <span{{ item.text_attributes }}>{{ item.text }}</span>
+  {%- else -%}
+    {{ item.text }}
+  {%- endif -%}
+{% endmacro %}
