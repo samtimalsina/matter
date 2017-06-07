@@ -82,7 +82,8 @@ html {
   box-sizing: border-box;
   height: 100%;
   width: 100%;
-  padding-top: 64px; }
+  padding-top: 64px;
+  background: #EAEAEA; }
 
 aside.mdc-temporary-drawer {
   padding-top: 64px; }
@@ -112,8 +113,7 @@ aside.mdc-temporary-drawer {
       -ms-flex-positive: 1;
           flex-grow: 1;
   height: 100%;
-  box-sizing: border-box;
-  background-color: #EEEEEE; }
+  box-sizing: border-box; }
 
 .matter-main {
   padding: 20px; }
@@ -122,15 +122,11 @@ aside.mdc-temporary-drawer {
   background-color: #FFFFFF;
   position: relative; }
 
-.floating-fab-buttons {
-  position: relative;
-  width: 100%;
-  height: 56px; }
-  .floating-fab-buttons .mdc-fab {
-    position: absolute;
-    right: 0;
-    margin-left: 20px;
-    top: -48px; }
+.floating-fab-buttons .mdc-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 50px;
+  z-index: 1001; }
 
 .element-machine-name {
   position: relative; }
@@ -391,30 +387,35 @@ aside.mdc-persistent-drawer {
 .mdl-data-table {
   position: relative;
   border-collapse: collapse;
-  white-space: nowrap;
-  font-size: inherit;
-  background-color: rgb(#FFFFFF);
+  font-size: 13px;
+  background-color: #FFFFFF;
   width: 100%;
   margin-bottom: 20px; }
   .mdl-data-table thead {
+    font-size: 13px;
     padding-bottom: 3px; }
     .mdl-data-table thead .mdl-data-table__select {
       margin-top: 0; }
   .mdl-data-table tbody tr {
     position: relative;
     height: 48px;
+    color: rgba(0, 0, 0, 0.87);
     transition-property: background-color; }
-    .mdl-data-table tbody tr.is-selected {
-      background-color: #e0e0e0; }
+    .mdl-data-table tbody tr.selected {
+      background-color: #F5F5F5; }
     .mdl-data-table tbody tr:hover {
-      background-color: #eeeeee; }
+      background-color: #EEEEEE; }
   .mdl-data-table td, .mdl-data-table th {
-    padding: 0 18px 5px 18px;
+    padding: 0 28px 5px 28px;
     text-align: right; }
+    .mdl-data-table td.views-field-title, .mdl-data-table th.views-field-title {
+      padding-left: 12px; }
     .mdl-data-table td:first-of-type, .mdl-data-table th:first-of-type {
-      padding-left: 24px; }
+      padding-left: 24px;
+      padding-right: 12px; }
     .mdl-data-table td:last-of-type, .mdl-data-table th:last-of-type {
-      padding-right: 24px; }
+      padding-right: 24px;
+      padding-left: 12px; }
   .mdl-data-table td {
     position: relative;
     vertical-align: middle;
@@ -429,10 +430,10 @@ aside.mdc-persistent-drawer {
     position: relative;
     vertical-align: bottom;
     text-overflow: ellipsis;
-    height: 48px;
-    font-size: 1em;
+    height: 56px;
+    font-size: 13px;
     color: rgba(0, 0, 0, 0.54);
-    padding-bottom: 8px;
+    padding: 0 28px 18px 28px;
     box-sizing: border-box; }
     .mdl-data-table th.mdl-data-table__header--sorted-ascending, .mdl-data-table th.mdl-data-table__header--sorted-descending {
       color: rgba(0, 0, 0, 0.87); }
@@ -447,6 +448,18 @@ aside.mdc-persistent-drawer {
           color: rgba(0, 0, 0, 0.26); }
     .mdl-data-table th.mdl-data-table__header--sorted-descending:before {
       content: "\E5DB"; }
+  .mdl-data-table .mdc-form-field {
+    margin: 0; }
+  .mdl-data-table .mdc-checkbox {
+    padding: 0; }
+  .mdl-data-table .mdc-checkbox__background {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%; }
+  .mdl-data-table .dropbutton-wrapper {
+    text-align: right;
+    margin-right: -10px; }
 
 .mdl-data-table__select {
   width: 16px; }

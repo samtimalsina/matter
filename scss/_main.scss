@@ -13,6 +13,7 @@ html {
   height: 100%;
   width: 100%;
   padding-top: 64px;
+  background: #EAEAEA;
 }
 
 aside.mdc-temporary-drawer {
@@ -39,7 +40,6 @@ aside.mdc-temporary-drawer {
   flex-grow: 1;
   height: 100%;
   box-sizing: border-box;
-  background-color: #EEEEEE;
 }
 
 .matter-main {
@@ -52,14 +52,11 @@ aside.mdc-temporary-drawer {
 }
 
 .floating-fab-buttons {
-  position: relative;
-  width: 100%;
-  height: 56px;
   .mdc-fab {
-    position: absolute;
-    right: 0;
-    margin-left: 20px;
-    top: -48px;
+    position: fixed;
+    right: 20px;
+    bottom: 50px;
+    z-index: 1001;
   }
 }
 
