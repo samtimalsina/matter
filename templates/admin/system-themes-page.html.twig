@@ -37,48 +37,50 @@
     %}
     <h3>{{ theme_group.title }}</h3>
     <div{{ theme_group.attributes.addClass(theme_group_classes) }}>
-      {% for theme in theme_group.themes %}
-        {%
+      <div class="mdc-layout-grid__inner">
+        {% for theme in theme_group.themes %}
+          {%
           set theme_classes = [
-            theme.is_default ? 'mdc-card--theme-dark theme-default',
-            theme.is_admin ? 'mdc-card--theme-dark theme-admin',
-            'mdc-layout-grid__cell',
+          theme.is_default ? 'mdc-card--theme-dark theme-default',
+          theme.is_admin ? 'mdc-card--theme-dark theme-admin',
+          'mdc-layout-grid__cell',
           ]
-        %}
-        <div {{ theme.attributes.addClass(theme_classes) }}>
-          <div class="mdc-card">
-            <section class="mdc-card__primary">
-              <h1 class="mdc-card__title">{{- theme.name }} {{ theme.version -}}</h1>
-              <h2 class="mdc-card__subtitle">
-                {% if theme.notes %}
-                  ({{ theme.notes|safe_join(', ') }})
-                {%- endif -%}
-              </h2>
-              {% if theme.incompatible %}
-                <div class="incompatible">{{ theme.incompatible }}</div>
-              {% else %}
-                {% spaceless %}
-                  <!-- Right aligned menu below button -->
-                  <div class="mdc-menu-anchor dropbutton-wrapper">
-                    <i class="icon-button icon--button-dropbutton material-icons" role="button" aria-pressed="false">more_vert</i>
-                    <div class="mdc-simple-menu" tabindex="-1">
-                      {{ theme.operations }}
+          %}
+          <div {{ theme.attributes.addClass(theme_classes) }}>
+            <div class="mdc-card">
+              <section class="mdc-card__primary">
+                <h1 class="mdc-card__title">{{- theme.name }} {{ theme.version -}}</h1>
+                <h2 class="mdc-card__subtitle">
+                  {% if theme.notes %}
+                    ({{ theme.notes|safe_join(', ') }})
+                  {%- endif -%}
+                </h2>
+                {% if theme.incompatible %}
+                  <div class="incompatible">{{ theme.incompatible }}</div>
+                {% else %}
+                  {% spaceless %}
+                    <!-- Right aligned menu below button -->
+                    <div class="mdc-menu-anchor dropbutton-wrapper">
+                      <i class="icon-button icon--button-dropbutton material-icons" role="button" aria-pressed="false">more_vert</i>
+                      <div class="mdc-simple-menu" tabindex="-1">
+                        {{ theme.operations }}
+                      </div>
                     </div>
-                  </div>
-                {% endspaceless %}
-              {% endif %}
-            </section>
-            <section class="mdc-card__media">
-              {% if theme.screenshot %}
-                {{ theme.screenshot }}
-              {% endif %}
-            </section>
-            <section class="mdc-card__supporting-text">
-              {{ theme.description }}
-            </section>
+                  {% endspaceless %}
+                {% endif %}
+              </section>
+              <section class="mdc-card__media">
+                {% if theme.screenshot %}
+                  {{ theme.screenshot }}
+                {% endif %}
+              </section>
+              <section class="mdc-card__supporting-text">
+                {{ theme.description }}
+              </section>
+            </div>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
   {% endfor %}
 </div>

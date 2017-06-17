@@ -15,22 +15,22 @@
  */
 #}
 {% if content %}
-<ul class="mdc-list mdc-list--two-line mdc-list--avatar-list">
+<div class="mdc-list mdc-list--two-line mdc-list--avatar-list">
   {% for item in content %}
-    <li class="mdc-list-item">
+    <a class="mdc-list-item mdc-ripple-surface mdc-ripple-surface--primary" href="{{ item.link_path }}">
       <span class="mdc-list-item__start-detail grey-bg" role="presentation">
         <i class="material-icons" aria-hidden="true">folder</i>
       </span>
       <span class="mdc-list-item__text">
-        {{ item.link }}
+        {{ item.title }}
         {% if item.description %}
-          <span class="mdc-list-item__text_secondary">{{ item.description }}</span>
+          <span class="mdc-list-item__text__secondary">{{ item.description }}</span>
         {% endif %}
       </span>
       <span class="mdc-list-item__end-detail">
         <i class="material-icons" arial-label="Add to favorites">favorite_border</i>
       </span>
-    </li>
+    </a>
   {% endfor %}
-</ul>
+</div>
 {% endif %}

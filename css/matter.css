@@ -6,6 +6,9 @@
   width: 100%;
   height: auto; }
 
+.system-theme-cards .mdc-card {
+  background: #FFFFFF; }
+
 .system-theme-cards .mdc-card__primary {
   position: relative; }
   .system-theme-cards .mdc-card__primary .mdc-menu-anchor {
@@ -63,89 +66,6 @@ body.toolbar-tray-open main.matter-main {
 
 header.mdc-toolbar--fixed {
   z-index: 501; }
-
-/* Ensure layout covers the entire screen. */
-html {
-  height: 100%; }
-
-/* Place drawer and content side by side. */
-.matter-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  height: 100%;
-  width: 100%;
-  padding-top: 64px;
-  background: #EAEAEA; }
-
-aside.mdc-temporary-drawer {
-  padding-top: 64px; }
-
-/* A simple menu button. */
-.matter-menu {
-  background: none;
-  border: none;
-  width: 24px;
-  height: 24px;
-  padding: 0;
-  margin: 0;
-  margin-right: 24px;
-  color: #FFF;
-  box-sizing: border-box; }
-
-/* Stack toolbar and main on top of each other. */
-.matter-content {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  height: 100%;
-  box-sizing: border-box; }
-
-.matter-main {
-  padding: 20px; }
-
-.region-content {
-  background-color: #FFFFFF;
-  position: relative; }
-
-.floating-fab-buttons .mdc-fab {
-  position: fixed;
-  right: 20px;
-  bottom: 50px;
-  z-index: 1001; }
-
-.element-machine-name {
-  position: relative; }
-  .element-machine-name .mdc-textfield__label {
-    position: relative; }
-
-.mdl-layout__header-row .mdl-navigation__link {
-  color: black; }
-
-.system-breadcrumb {
-  line-height: 24px; }
-  .system-breadcrumb .material-icons {
-    font-size: 12px; }
-  .system-breadcrumb a {
-    text-decoration: none;
-    color: #999; }
-    .system-breadcrumb a:hover {
-      text-decoration: underline;
-      color: #333; }
 
 /*
   Precomputed linear color channel values, for use in contrast calculations.
@@ -224,6 +144,245 @@ aside.mdc-temporary-drawer {
             animation-timing-function: linear; }
   to {
     opacity: 0; } }
+
+@keyframes mdc-ripple-fg-opacity-out {
+  from {
+    opacity: 1;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear; }
+  to {
+    opacity: 0; } }
+
+/* Ensure layout covers the entire screen. */
+html {
+  height: 100%; }
+
+/* Place drawer and content side by side. */
+.matter-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  padding-top: 64px;
+  background: #EAEAEA; }
+
+aside.mdc-temporary-drawer {
+  padding-top: 64px; }
+
+/* Stack toolbar and main on top of each other. */
+.matter-content {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  height: 100%;
+  box-sizing: border-box; }
+
+.matter-main {
+  padding: 20px; }
+
+.region-content {
+  background-color: #FFFFFF;
+  position: relative; }
+
+.floating-fab-buttons .mdc-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 50px;
+  z-index: 1001; }
+
+.element-machine-name {
+  position: relative; }
+  .element-machine-name .mdc-textfield__label {
+    position: relative; }
+
+.surface {
+  --mdc-ripple-surface-width: 0;
+  --mdc-ripple-surface-height: 0;
+  --mdc-ripple-fg-size: 0;
+  --mdc-ripple-left: 0;
+  --mdc-ripple-top: 0;
+  --mdc-ripple-fg-scale: 1;
+  --mdc-ripple-fg-translate-end: 0;
+  --mdc-ripple-fg-translate-start: 0;
+  will-change: transform, opacity;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  position: relative; }
+  .surface:not(.mdc-ripple-upgraded):hover::before, .surface:not(.mdc-ripple-upgraded):focus::before, .surface:not(.mdc-ripple-upgraded):active::after {
+    transition-duration: 85ms;
+    opacity: .6; }
+  .surface::before {
+    background-color: rgba(0, 0, 0, 0.06);
+    position: absolute;
+    top: calc(50% - 100%);
+    left: calc(50% - 100%);
+    width: 200%;
+    height: 200%;
+    transition: opacity 250ms linear;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    content: ""; }
+  .surface.mdc-ripple-upgraded::before {
+    top: calc(50% - 100%);
+    left: calc(50% - 100%);
+    width: 200%;
+    height: 200%;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
+            transform: scale(var(--mdc-ripple-fg-scale, 0)); }
+  .surface.mdc-ripple-upgraded--background-focused::before {
+    opacity: .99999; }
+  .surface.mdc-ripple-upgraded--background-active-fill::before {
+    transition-duration: 120ms;
+    opacity: 1; }
+  .surface.mdc-ripple-upgraded--unbounded::before {
+    top: calc(50% - 50%);
+    top: var(--mdc-ripple-top, calc(50% - 50%));
+    left: calc(50% - 50%);
+    left: var(--mdc-ripple-left, calc(50% - 50%));
+    width: 100%;
+    width: var(--mdc-ripple-fg-size, 100%);
+    height: 100%;
+    height: var(--mdc-ripple-fg-size, 100%);
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
+            transform: scale(var(--mdc-ripple-fg-scale, 0)); }
+  .surface::after {
+    background-color: rgba(0, 0, 0, 0.06);
+    position: absolute;
+    top: calc(50% - 100%);
+    left: calc(50% - 100%);
+    width: 200%;
+    height: 200%;
+    transition: opacity 250ms linear;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    content: ""; }
+  .surface.mdc-ripple-upgraded::after {
+    top: 0;
+    left: 0;
+    width: 100%;
+    width: var(--mdc-ripple-fg-size, 100%);
+    height: 100%;
+    height: var(--mdc-ripple-fg-size, 100%);
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: center center;
+            transform-origin: center center;
+    opacity: 0; }
+  .surface:not(.mdc-ripple-upgraded--unbounded)::after {
+    -webkit-transform-origin: center center;
+            transform-origin: center center; }
+  .surface.mdc-ripple-upgraded--unbounded::after {
+    top: 0;
+    top: var(--mdc-ripple-top, 0);
+    left: 0;
+    left: var(--mdc-ripple-left, 0);
+    width: 100%;
+    width: var(--mdc-ripple-fg-size, 100%);
+    height: 100%;
+    height: var(--mdc-ripple-fg-size, 100%);
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: center center;
+            transform-origin: center center; }
+  .surface.mdc-ripple-upgraded--foreground-activation::after {
+    -webkit-animation: 300ms mdc-ripple-fg-radius-in forwards, 83ms mdc-ripple-fg-opacity-in forwards;
+            animation: 300ms mdc-ripple-fg-radius-in forwards, 83ms mdc-ripple-fg-opacity-in forwards; }
+  .surface.mdc-ripple-upgraded--foreground-deactivation::after {
+    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));
+            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));
+    -webkit-animation: 250ms mdc-ripple-fg-opacity-out;
+            animation: 250ms mdc-ripple-fg-opacity-out; }
+
+.background-white {
+  background: #FFFFFF; }
+
+.mdl-layout__header-row .mdl-navigation__link {
+  color: black; }
+
+.system-breadcrumb {
+  line-height: 24px; }
+  .system-breadcrumb .material-icons {
+    font-size: 12px; }
+  .system-breadcrumb a {
+    text-decoration: none;
+    color: #999; }
+    .system-breadcrumb a:hover {
+      text-decoration: underline;
+      color: #333; }
+
+/*
+  Precomputed linear color channel values, for use in contrast calculations.
+  See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+
+  Algorithm, for c in 0 to 255:
+  f(c) {
+    c = c / 255;
+    return c < 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  }
+
+  This lookup table is needed since there is no `pow` in SASS.
+*/
+/**
+ * Calculate the luminance for a color.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Calculate the contrast ratio between two colors.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Determine whether to use dark or light text on top of given color.
+ * Returns "dark" for dark text and "light" for light text.
+ */
+/*
+  Main theme colors.
+  If you're a user customizing your color scheme in SASS, these are probably the only variables you need to change.
+*/
+/* Indigo 500 */
+/* Pink A200 */
+/* White */
+/* Which set of text colors to use for each main theme color (light or dark) */
+/* Text colors according to light vs dark and text type */
+/* Primary text colors for each of the theme colors */
+/** MDC Ripple keyframes are split into their own file so that _mixins.scss can rely on them. */
+@keyframes mdc-ripple-fg-radius-in {
+  from {
+    -webkit-transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);
+            transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);
+    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+  to {
+    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));
+            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); } }
+
+@keyframes mdc-ripple-fg-opacity-in {
+  from {
+    opacity: 0;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear; }
+  to {
+    opacity: 1; } }
 
 @keyframes mdc-ripple-fg-opacity-out {
   from {
@@ -384,39 +543,39 @@ aside.mdc-persistent-drawer {
  * This mixin should be applied to elements whose elevation values will change depending on their
  * context (e.g. when active or disabled).
  */
-.mdl-data-table {
+table {
   position: relative;
   border-collapse: collapse;
   font-size: 13px;
   background-color: #FFFFFF;
   width: 100%;
   margin-bottom: 20px; }
-  .mdl-data-table thead {
+  table thead {
     font-size: 13px;
     padding-bottom: 3px; }
-    .mdl-data-table thead .mdl-data-table__select {
+    table thead .mdl-data-table__select {
       margin-top: 0; }
-  .mdl-data-table tbody tr {
+  table tbody tr {
     position: relative;
     height: 48px;
     color: rgba(0, 0, 0, 0.87);
     transition-property: background-color; }
-    .mdl-data-table tbody tr.selected {
+    table tbody tr.selected {
       background-color: #F5F5F5; }
-    .mdl-data-table tbody tr:hover {
+    table tbody tr:hover {
       background-color: #EEEEEE; }
-  .mdl-data-table td, .mdl-data-table th {
+  table td, table th {
     padding: 0 28px 5px 28px;
-    text-align: right; }
-    .mdl-data-table td.views-field-title, .mdl-data-table th.views-field-title {
+    text-align: left; }
+    table td.views-field-title, table th.views-field-title {
       padding-left: 12px; }
-    .mdl-data-table td:first-of-type, .mdl-data-table th:first-of-type {
+    table td:first-of-type, table th:first-of-type {
       padding-left: 24px;
       padding-right: 12px; }
-    .mdl-data-table td:last-of-type, .mdl-data-table th:last-of-type {
+    table td:last-of-type, table th:last-of-type {
       padding-right: 24px;
       padding-left: 12px; }
-  .mdl-data-table td {
+  table td {
     position: relative;
     vertical-align: middle;
     height: 48px;
@@ -424,9 +583,9 @@ aside.mdc-persistent-drawer {
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     padding-top: 5px;
     box-sizing: border-box; }
-    .mdl-data-table td .mdl-data-table__select {
+    table td .mdl-data-table__select {
       vertical-align: middle; }
-  .mdl-data-table th {
+  table th {
     position: relative;
     vertical-align: bottom;
     text-overflow: ellipsis;
@@ -434,32 +593,39 @@ aside.mdc-persistent-drawer {
     font-size: 13px;
     color: rgba(0, 0, 0, 0.54);
     padding: 0 28px 18px 28px;
-    box-sizing: border-box; }
-    .mdl-data-table th.mdl-data-table__header--sorted-ascending, .mdl-data-table th.mdl-data-table__header--sorted-descending {
+    box-sizing: border-box;
+    font-weight: 400; }
+    table th.is-active {
       color: rgba(0, 0, 0, 0.87); }
-      .mdl-data-table th.mdl-data-table__header--sorted-ascending:before, .mdl-data-table th.mdl-data-table__header--sorted-descending:before {
+    table th a {
+      color: inherit;
+      font-weight: 700; }
+    table th.mdl-data-table__header--sorted-ascending, table th.mdl-data-table__header--sorted-descending {
+      color: rgba(0, 0, 0, 0.87); }
+      table th.mdl-data-table__header--sorted-ascending:before, table th.mdl-data-table__header--sorted-descending:before {
         font-size: 16px;
         content: "\E5D8";
         margin-right: 5px;
         vertical-align: sub; }
-      .mdl-data-table th.mdl-data-table__header--sorted-ascending:hover, .mdl-data-table th.mdl-data-table__header--sorted-descending:hover {
+      table th.mdl-data-table__header--sorted-ascending:hover, table th.mdl-data-table__header--sorted-descending:hover {
         cursor: pointer; }
-        .mdl-data-table th.mdl-data-table__header--sorted-ascending:hover:before, .mdl-data-table th.mdl-data-table__header--sorted-descending:hover:before {
+        table th.mdl-data-table__header--sorted-ascending:hover:before, table th.mdl-data-table__header--sorted-descending:hover:before {
           color: rgba(0, 0, 0, 0.26); }
-    .mdl-data-table th.mdl-data-table__header--sorted-descending:before {
+    table th.mdl-data-table__header--sorted-descending:before {
       content: "\E5DB"; }
-  .mdl-data-table .mdc-form-field {
+  table .mdc-form-field {
     margin: 0; }
-  .mdl-data-table .mdc-checkbox {
+  table .mdc-checkbox {
     padding: 0; }
-  .mdl-data-table .mdc-checkbox__background {
+  table .mdc-checkbox__background {
     top: 0;
     left: 0;
     height: 100%;
     width: 100%; }
-  .mdl-data-table .dropbutton-wrapper {
-    text-align: right;
+  table .dropbutton-wrapper {
     margin-right: -10px; }
+  table th.views-field-operations {
+    font-size: 0; }
 
 .mdl-data-table__select {
   width: 16px; }
@@ -485,6 +651,25 @@ form.vbo-elevated > .form-wrapper {
   position: fixed;
   margin-top: -130px; }
 
+nav.pager {
+  text-align: right;
+  padding: 0 24px;
+  height: 56px;
+  line-height: 56px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.47); }
+  nav.pager a {
+    color: inherit; }
+  nav.pager .pager__item {
+    width: 24px;
+    display: inline-block;
+    text-align: center;
+    font-weight: 700; }
+    nav.pager .pager__item.is-active, nav.pager .pager__item.pager__item--icon {
+      color: rgba(0, 0, 0, 0.87); }
+    nav.pager .pager__item.page__item--inactive {
+      color: rgba(0, 0, 0, 0.33); }
+
 a {
   color: #0d47a1;
   text-decoration: none; }
@@ -508,61 +693,26 @@ p a, .has-styled-links a {
   -webkit-animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
           animation-timing-function: cubic-bezier(0.4, 0, 1, 1); }
 
-/**
- * The css property used for elevation. In most cases this should not be changed. It is exposed
- * as a variable for abstraction / easy use when needing to reference the property directly, for
- * example in a `will-change` rule.
- */
-/**
- * The default duration value for elevation transitions.
- */
-/**
- * The default easing value for elevation transitions.
- */
-/**
- * Applies the correct css rules to an element to give it the elevation specified by $z-value.
- * The $z-value must be between 0 and 24.
- */
-/**
- * Returns a string that can be used as the value for a `transition` property for elevation.
- * Calling this function directly is useful in situations where a component needs to transition
- * more than one property.
- *
- * ```scss
- * .foo {
- *   transition: mdc-elevation-transition-rule(), opacity 100ms ease;
- *   will-change: $mdc-elevation-property, opacity;
- * }
- * ```
- */
-/**
- * Applies the correct css rules needed to have an element transition between elevations.
- * This mixin should be applied to elements whose elevation values will change depending on their
- * context (e.g. when active or disabled).
- */
-form.views-exposed-form {
-  margin-bottom: 20px; }
-  form.views-exposed-form .mdc-icon-toggle {
-    float: right; }
-  form.views-exposed-form .toggle-form {
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-    max-height: 0;
-    overflow: hidden;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-align: baseline;
-        -ms-flex-align: baseline;
-            align-items: baseline;
-    border-radius: 3px;
-    -webkit-animation: max-height 175ms cubic-bezier(0, 0, 0.2, 1);
-            animation: max-height 175ms cubic-bezier(0, 0, 0.2, 1); }
-    form.views-exposed-form .toggle-form.toggle-form--show {
-      max-height: 500px;
-      height: auto;
-      background: #F5F5F2;
-      padding: 10px 20px; }
-    form.views-exposed-form .toggle-form > div {
-      margin-right: 10px; }
+form.views-exposed-form .mdc-icon-toggle {
+  float: right; }
+
+form.views-exposed-form .toggle-form {
+  max-height: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  border-radius: 3px;
+  -webkit-animation: max-height 175ms cubic-bezier(0, 0, 0.2, 1);
+          animation: max-height 175ms cubic-bezier(0, 0, 0.2, 1); }
+  form.views-exposed-form .toggle-form.toggle-form--show {
+    max-height: 500px;
+    height: auto;
+    padding: 0 24px; }
+  form.views-exposed-form .toggle-form > div {
+    margin-right: 10px; }

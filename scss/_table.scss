@@ -28,7 +28,7 @@ $data-table-card-padding: 10px !default;
 $data-table-button-padding-right: 16px !default;
 $data-table-cell-top: $data-table-card-padding / 2;
 
-.mdl-data-table {
+table {
   position: relative;
   //border: $data-table-dividers;
   border-collapse: collapse;
@@ -66,7 +66,7 @@ $data-table-cell-top: $data-table-card-padding / 2;
 
   td, th {
     padding: 0 $data-table-column-padding 5px $data-table-column-padding;
-    text-align: right;
+    text-align: left;
 
     &.views-field-title {
       padding-left: 12px;
@@ -106,6 +106,15 @@ $data-table-cell-top: $data-table-card-padding / 2;
     color: $data-table-header-color;
     padding: 0 $data-table-column-padding 18px $data-table-column-padding;
     box-sizing: border-box;
+    font-weight: 400;
+    &.is-active {
+      color: $data-table-content-color;
+    }
+
+    a {
+      color: inherit;
+      font-weight: 700;
+    }
 
     &.mdl-data-table__header--sorted-ascending,
     &.mdl-data-table__header--sorted-descending {
@@ -141,8 +150,10 @@ $data-table-cell-top: $data-table-card-padding / 2;
     width: 100%;
   }
   .dropbutton-wrapper {
-    text-align: right;
     margin-right: -10px;
+  }
+  th.views-field-operations {
+    font-size: 0;
   }
 }
 

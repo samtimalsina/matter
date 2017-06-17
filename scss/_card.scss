@@ -6,6 +6,9 @@
 }
 
 .system-theme-cards {
+  .mdc-card {
+    background: #FFFFFF;
+  }
   .mdc-card__primary {
     position: relative;
     .mdc-menu-anchor {

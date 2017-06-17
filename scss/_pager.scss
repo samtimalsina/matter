@@ -1,0 +1,23 @@
+nav.pager {
+  text-align: right;
+  padding: 0 24px;
+  height: 56px;
+  line-height: 56px;
+  font-size: 14px;
+  color: rgba(0,0,0,0.47);
+  a {
+    color: inherit;
+  }
+  .pager__item {
+    width: 24px;
+    display: inline-block;
+    text-align: center;
+    font-weight: 700;
+    &.is-active, &.pager__item--icon {
+      color: rgba(0,0,0,0.87);
+    }
+    &.page__item--inactive {
+      color: rgba(0,0,0,0.33);
+    }
+  }
+}

@@ -27,6 +27,11 @@ libraries-override:
   contextual/drupal.contextual-links: false
   core/drupal.dropbutton: false
   core/drupal.tableselect: matter/drupal.tableselect
+  system/base:
+    css:
+      component:
+        css/components/tablesort.module.css: css/components/tablesort.module.css
+        css/components/sticky-header.module.css: css/components/sticky-header.module.css
 
 libraries-extend:
   core/drupal.tabledrag:

@@ -10,10 +10,14 @@
 {%
   set classes = [
     'tablesort',
-    'tablesort--' ~ style,
+    'material-icons',
   ]
 %}
+{%
+  set icon = (style == 'asc') ? 'arrow_downward' : 'arrow_upward'
+%}
 <span{{ attributes.addClass(classes) }}>
+  {{ icon }}
   <span class="visually-hidden">
     {% if style == 'asc' -%}
       {{ 'Sort ascending'|t }}
