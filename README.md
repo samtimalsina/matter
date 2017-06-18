@@ -1,5 +1,7 @@
 # Matter - Material Admin Theme
 
+![Screenshot](./screenshot.png)
+
 > A cleaner Drupal 8 Admin Theme using [Material Components for the Web](https://material.io/components/web/).
 
 Matter uses `stable` as the base theme to have the minimal markup necessary to render Drupal elements. Preference is given to adding/overriding classes in twig templates rather than using preprocessors.
