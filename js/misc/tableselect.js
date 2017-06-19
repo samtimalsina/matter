@@ -89,6 +89,10 @@
            */
           $checkbox.closest('tr').toggleClass('selected', this.checked);
         });
+
+        // Display the Bulk Action Items if at least one checkbox is checked.
+        displayBulkActionItems((checkboxes.filter(':checked').length > 0));
+
         // Update the title and the state of the check all box.
         updateSelectAll(event.target.checked);
       }
