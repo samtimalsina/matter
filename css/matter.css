@@ -393,9 +393,8 @@ aside.mdc-temporary-drawer {
     opacity: 0; } }
 
 .toolbar-page_tabs {
-  position: absolute;
-  right: 0;
-  bottom: 0; }
+  position: relative;
+  margin: 16px 24px 0; }
 
 aside.mdc-persistent-drawer {
   margin-top: 64px; }

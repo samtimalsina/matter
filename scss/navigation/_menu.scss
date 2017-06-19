@@ -4,9 +4,8 @@
 @import "~@material/ripple/mixins";
 
 .toolbar-page_tabs {
-  position: absolute;
-  right: 0;
-  bottom: 0;
+  position: relative;
+  margin: 16px 24px 0;
 }
 
 aside.mdc-persistent-drawer {
