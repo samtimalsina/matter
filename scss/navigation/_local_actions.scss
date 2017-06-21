@@ -1,0 +1,10 @@
+.local-actions-buttons {
+  position: relative;
+  z-index: 2;
+  .material-icons {
+    font-size: inherit;
+  }
+  &.vbo-hide {
+    display: none;
+  }
+}

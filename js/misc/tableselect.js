@@ -38,7 +38,8 @@
     var checkboxes;
     var lastChecked;
     var $table = $(table);
-    var $wrapperForm = $table.closest('form').addClass('vbo-hide vbo-elevated');
+    var $wrapperForm = $table.closest('form').addClass('vbo-hide');
+    var $viewExposedForm = $('.views-exposed-form');
     var strings = {
       selectAll: Drupal.t('Select all rows in this table'),
       selectNone: Drupal.t('Deselect all rows in this table')
@@ -63,6 +64,7 @@
 
     var displayBulkActionItems = function (state) {
       $wrapperForm.toggleClass('vbo-hide', !state);
+      $viewExposedForm.toggleClass('activated', state);
     };
 
     // Find all <th> with class select-all, and insert the check all checkbox.

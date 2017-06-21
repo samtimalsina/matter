@@ -1,5 +1,4 @@
-// Custom Overrides
-@import 'variables';
+@import 'overrides';
 
 // Custom Components
 @import 'card';
@@ -9,8 +8,8 @@
 @import 'header';
 @import 'main';
 @import 'navigation/menu';
+@import 'pager';
 @import 'select';
 @import 'table';
-@import 'pager';
 @import 'typography';
-@import 'views_exposed_form';
+@import 'views';

@@ -10,6 +10,10 @@
  * @see template_preprocess_menu_local_action()
  */
 #}
-<button class="mdc-fab material-icons" aria-label="Add" onClick="window.location.href = '{{ url }}';">
-  <span class="mdc-fab__icon">add</span>
-</button>
+{% import _self as local_action %}
+
+{{ link(local_action.iconize_text(link['#title']), link['#url'], { 'class':['mdc-button mdc-button--raised mdc-button--dense mdc-button--accent']}) }}
+
+{% macro iconize_text(text) %}
+  <span class="material-icons">add</span> {{ text }}
+{% endmacro %}

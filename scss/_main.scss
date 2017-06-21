@@ -1,4 +1,7 @@
 @import "~@material/ripple/mixins";
+@import "~@material/elevation/mixins";
+@import "~@material/theme/mixins";
+@import "~@material/typography/mixins";
 
 /* Ensure layout covers the entire screen. */
 html {
@@ -6,7 +9,7 @@ html {
 }
 
 /* Place drawer and content side by side. */
-.matter-body {
+body {
   display: flex;
   flex-direction: row;
   padding: 0;
@@ -15,7 +18,8 @@ html {
   height: 100%;
   width: 100%;
   padding-top: 64px;
-  background: #EAEAEA;
+  @include mdc-theme-prop(background-color, background);
+  @include mdc-typography-base();
 }
 
 aside.mdc-temporary-drawer {
@@ -66,4 +70,24 @@ aside.mdc-temporary-drawer {
 
 .background-white {
   background: #FFFFFF;
+}
+
+.region--content {
+  @include mdc-elevation(2);
+  border-radius: 2px;
+  background: #FFFFFF;
+  position: relative;
+  padding: 24px;
+  table.mdl-data-table {
+    margin-left: -24px;
+    width: calc(100% + 48px);
+  }
+  .typography {
+    h3 {
+      @include mdc-typography('headline');
+    }
+    div, dl, ul, ol, p {
+      @include mdc-typography('body1');
+    }
+  }
 }

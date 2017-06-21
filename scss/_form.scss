@@ -6,6 +6,14 @@
   padding: 20px;
 }
 
-.form-actions {
-  margin-top: 20px;
+.form-wrapper[data-drupal-selector="edit-header"] {
+  > div {
+    display: flex;
+  }
+  min-height: 72px;
+  line-height: 72px;
+  background: #FFFFFF;
+  .form-actions {
+    margin-left: 10px;
+  }
 }

@@ -1,11 +1,8 @@
 third_party_settings:
   shortcut:
     module_link: true
-matter_color_primary: '#2BA9E0'
-matter_color_accent: '#689F38'
-matter_color_background: '#F5F5F2'
 matter_persistent_helptext: true
-matter_checkbox_to_toggle: true
+matter_checkbox_to_toggle: false
 matter_should_use_custom_cdn: false
 matter_library_css:
 matter_library_js:

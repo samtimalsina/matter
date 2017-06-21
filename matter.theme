@@ -129,9 +129,12 @@ function matter_theme_suggestions_table_alter(array &$suggestions, array $variab
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function matter_theme_suggestions_preprocess_links_alter(array &$suggestions, array $variables) {
+function matter_theme_suggestions_links_alter(array &$suggestions, array $variables) {
   if (!empty($variables['attributes']['id'])) {
-    $suggestions[] = 'links__' . $variables['attributes']['class'];
+    $suggestions[] = 'links__' . $variables['attributes']['id'];
+  }
+  if (!empty($variables['attributes']['class']) && in_array('operations', $variables['attributes']['class'])) {
+    $suggestions[] = 'links__operations';
   }
 }
 
@@ -188,4 +191,20 @@ function matter_preprocess_views_exposed_form(array &$variables) {
   if(theme_get_setting('matter_hide_exposed_form')) {
     $variables['hide_exposed_form'] = TRUE;
   }
+}
+
+/**
+ * Implements template_preprocess_table().
+ */
+function matter_preprocess_table(array &$variables) {
+  if (array_key_exists('operations', $variables['header'])) {
+    $variables['header']['operations']['attributes']['class'] = ['views-field-operations'];
+  }
+}
+
+/**
+ * Implements template_preprocess_links().
+ */
+function matter_preprocess_links(array &$variables) {
+
 }

@@ -34,36 +34,6 @@ function matter_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormS
     '#description' => t('Single Checkbox will be converted to a toogle button.'),
   );
 
-  $form['material_theme'] = array(
-    '#type' => 'details',
-    '#title' => t('Theme Settings'),
-    '#weight' => 2,
-    '#collapsible' => TRUE,
-    '#collapsed' => TRUE,
-    '#group' => 'matter',
-  );
-
-  $form['material_theme']['matter_color_primary'] = array(
-    '#type' => 'color',
-    '#title' => t('Primary Color'),
-    '#default_value' => theme_get_setting('matter_color_primary'),
-    '#description' => t('Theme Primary Color'),
-  );
-
-  $form['material_theme']['matter_color_accent'] = array(
-    '#type' => 'color',
-    '#title' => t('Accent Color'),
-    '#default_value' => theme_get_setting('matter_color_accent'),
-    '#description' => t('Theme Accent Color'),
-  );
-
-  $form['material_theme']['matter_color_background'] = array(
-    '#type' => 'color',
-    '#title' => t('Background Color'),
-    '#default_value' => theme_get_setting('matter_color_background'),
-    '#description' => t('Theme Background Color'),
-  );
-
   $form['material_advanced'] = array(
     '#type' => 'details',
     '#title' => t('Advanced'),

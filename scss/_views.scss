@@ -1,8 +1,19 @@
 @import "~@material/animation/mdc-animation";
+@import "~@material/theme/mixins";
 
 form.views-exposed-form {
+  min-height: 72px;
+  position: relative;
+  z-index: 1;
+  background-color: #FFFFFF;
+  &.activated {
+    display: none;
+  }
   .mdc-icon-toggle {
-    float: right;
+    position: absolute;
+    right: -12px;
+    bottom: 0;
+    z-index: 2;
   }
   .toggle-form {
     max-height: 0;
@@ -15,7 +26,6 @@ form.views-exposed-form {
     &.toggle-form--show {
       max-height: 500px;
       height: auto;
-      padding: 0 24px;
     }
     > div {
       margin-right: 10px;

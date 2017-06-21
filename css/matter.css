@@ -2,12 +2,92 @@
  Matter 
  Drupal 8 Theme inspired by Material UI
 */
+:root {
+  --mdc-theme-primary: #0678BE !important;
+  --mdc-theme-accent: #96BC44 !important;
+  --mdc-theme-background: #F6F6F2 !important;
+  --mdc-layout-grid-margin-desktop: 0px !important; }
+
+/*
+  Precomputed linear color channel values, for use in contrast calculations.
+  See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+
+  Algorithm, for c in 0 to 255:
+  f(c) {
+    c = c / 255;
+    return c < 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  }
+
+  This lookup table is needed since there is no `pow` in SASS.
+*/
+/**
+ * Calculate the luminance for a color.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Calculate the contrast ratio between two colors.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Determine whether to use dark or light text on top of given color.
+ * Returns "dark" for dark text and "light" for light text.
+ */
+/*
+  Main theme colors.
+  If you're a user customizing your color scheme in SASS, these are probably the only variables you need to change.
+*/
+/* Indigo 500 */
+/* Pink A200 */
+/* White */
+/* Which set of text colors to use for each main theme color (light or dark) */
+/* Text colors according to light vs dark and text type */
+/* Primary text colors for each of the theme colors */
+/**
+ * Applies the correct theme color style to the specified property.
+ * $property is typically color or background-color, but can be any CSS property that accepts color values.
+ * $style should be one of the map keys in $mdc-theme-property-values (_variables.scss).
+ */
+/**
+ * Creates a rule to be used in MDC-Web components for dark theming, and applies the provided contents.
+ * Should provide the $root-selector option if applied to anything other than the root selector.
+ * When used with a modifier class, provide a second argument of `true` for the $compound parameter
+ * to specify that this should be attached as a compound class.
+ *
+ * Usage example:
+ *
+ * ```scss
+ * .mdc-foo {
+ *   color: black;
+ *
+ *   @include mdc-theme-dark {
+ *     color: white;
+ *   }
+ *
+ *   &__bar {
+ *     background: black;
+ *
+ *     @include mdc-theme-dark(".mdc-foo") {
+ *       background: white;
+ *     }
+ *   }
+ * }
+ *
+ * .mdc-foo--disabled {
+ *   opacity: .38;
+ *
+ *   @include mdc-theme-dark(".mdc-foo", true) {
+ *     opacity: .5;
+ *   }
+ * }
+ * ```
+ */
 .mdc-card__media img {
   width: 100%;
   height: auto; }
 
 .system-theme-cards .mdc-card {
-  background: #FFFFFF; }
+  background-color: #fff;
+  background-color: var(--mdc-theme-background, #fff); }
 
 .system-theme-cards .mdc-card__primary {
   position: relative; }
@@ -52,8 +132,16 @@
 .vertical-tabs__pane {
   padding: 20px; }
 
-.form-actions {
-  margin-top: 20px; }
+.form-wrapper[data-drupal-selector="edit-header"] {
+  min-height: 72px;
+  line-height: 72px;
+  background: #FFFFFF; }
+  .form-wrapper[data-drupal-selector="edit-header"] > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+  .form-wrapper[data-drupal-selector="edit-header"] .form-actions {
+    margin-left: 10px; }
 
 body.toolbar-tray-open header.mdc-toolbar--fixed {
   top: 80px; }
@@ -153,12 +241,119 @@ header.mdc-toolbar--fixed {
   to {
     opacity: 0; } }
 
+/**
+ * The css property used for elevation. In most cases this should not be changed. It is exposed
+ * as a variable for abstraction / easy use when needing to reference the property directly, for
+ * example in a `will-change` rule.
+ */
+/**
+ * The default duration value for elevation transitions.
+ */
+/**
+ * The default easing value for elevation transitions.
+ */
+/**
+ * Applies the correct css rules to an element to give it the elevation specified by $z-value.
+ * The $z-value must be between 0 and 24.
+ */
+/**
+ * Returns a string that can be used as the value for a `transition` property for elevation.
+ * Calling this function directly is useful in situations where a component needs to transition
+ * more than one property.
+ *
+ * ```scss
+ * .foo {
+ *   transition: mdc-elevation-transition-rule(), opacity 100ms ease;
+ *   will-change: $mdc-elevation-property, opacity;
+ * }
+ * ```
+ */
+/**
+ * Applies the correct css rules needed to have an element transition between elevations.
+ * This mixin should be applied to elements whose elevation values will change depending on their
+ * context (e.g. when active or disabled).
+ */
+/*
+  Precomputed linear color channel values, for use in contrast calculations.
+  See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+
+  Algorithm, for c in 0 to 255:
+  f(c) {
+    c = c / 255;
+    return c < 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  }
+
+  This lookup table is needed since there is no `pow` in SASS.
+*/
+/**
+ * Calculate the luminance for a color.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Calculate the contrast ratio between two colors.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Determine whether to use dark or light text on top of given color.
+ * Returns "dark" for dark text and "light" for light text.
+ */
+/*
+  Main theme colors.
+  If you're a user customizing your color scheme in SASS, these are probably the only variables you need to change.
+*/
+/* Indigo 500 */
+/* Pink A200 */
+/* White */
+/* Which set of text colors to use for each main theme color (light or dark) */
+/* Text colors according to light vs dark and text type */
+/* Primary text colors for each of the theme colors */
+/**
+ * Applies the correct theme color style to the specified property.
+ * $property is typically color or background-color, but can be any CSS property that accepts color values.
+ * $style should be one of the map keys in $mdc-theme-property-values (_variables.scss).
+ */
+/**
+ * Creates a rule to be used in MDC-Web components for dark theming, and applies the provided contents.
+ * Should provide the $root-selector option if applied to anything other than the root selector.
+ * When used with a modifier class, provide a second argument of `true` for the $compound parameter
+ * to specify that this should be attached as a compound class.
+ *
+ * Usage example:
+ *
+ * ```scss
+ * .mdc-foo {
+ *   color: black;
+ *
+ *   @include mdc-theme-dark {
+ *     color: white;
+ *   }
+ *
+ *   &__bar {
+ *     background: black;
+ *
+ *     @include mdc-theme-dark(".mdc-foo") {
+ *       background: white;
+ *     }
+ *   }
+ * }
+ *
+ * .mdc-foo--disabled {
+ *   opacity: .38;
+ *
+ *   @include mdc-theme-dark(".mdc-foo", true) {
+ *     opacity: .5;
+ *   }
+ * }
+ * ```
+ */
+/* TODO(sgomes): Figure out what to do about desktop font sizes. */
+/* TODO(sgomes): Figure out what to do about i18n and i18n font sizes. */
 /* Ensure layout covers the entire screen. */
 html {
   height: 100%; }
 
 /* Place drawer and content side by side. */
-.matter-body {
+body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -172,7 +367,11 @@ html {
   height: 100%;
   width: 100%;
   padding-top: 64px;
-  background: #EAEAEA; }
+  background-color: #fff;
+  background-color: var(--mdc-theme-background, #fff);
+  font-family: Roboto, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased; }
 
 aside.mdc-temporary-drawer {
   padding-top: 64px; }
@@ -317,6 +516,32 @@ aside.mdc-temporary-drawer {
 .background-white {
   background: #FFFFFF; }
 
+.region--content {
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  background: #FFFFFF;
+  position: relative;
+  padding: 24px; }
+  .region--content table.mdl-data-table {
+    margin-left: -24px;
+    width: calc(100% + 48px); }
+  .region--content .typography h3 {
+    font-family: Roboto, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 2rem; }
+  .region--content .typography div, .region--content .typography dl, .region--content .typography ul, .region--content .typography ol, .region--content .typography p {
+    font-family: Roboto, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.25rem; }
+
 .mdl-layout__header-row .mdl-navigation__link {
   color: black; }
 
@@ -330,6 +555,14 @@ aside.mdc-temporary-drawer {
     .system-breadcrumb a:hover {
       text-decoration: underline;
       color: #333; }
+
+.local-actions-buttons {
+  position: relative;
+  z-index: 2; }
+  .local-actions-buttons .material-icons {
+    font-size: inherit; }
+  .local-actions-buttons.vbo-hide {
+    display: none; }
 
 /*
   Precomputed linear color channel values, for use in contrast calculations.
@@ -507,48 +740,207 @@ aside.mdc-persistent-drawer {
     -webkit-animation: 250ms mdc-ripple-fg-opacity-out;
             animation: 250ms mdc-ripple-fg-opacity-out; }
 
+/*
+  Precomputed linear color channel values, for use in contrast calculations.
+  See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+
+  Algorithm, for c in 0 to 255:
+  f(c) {
+    c = c / 255;
+    return c < 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  }
+
+  This lookup table is needed since there is no `pow` in SASS.
+*/
+/**
+ * Calculate the luminance for a color.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Calculate the contrast ratio between two colors.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Determine whether to use dark or light text on top of given color.
+ * Returns "dark" for dark text and "light" for light text.
+ */
+/*
+  Main theme colors.
+  If you're a user customizing your color scheme in SASS, these are probably the only variables you need to change.
+*/
+/* Indigo 500 */
+/* Pink A200 */
+/* White */
+/* Which set of text colors to use for each main theme color (light or dark) */
+/* Text colors according to light vs dark and text type */
+/* Primary text colors for each of the theme colors */
+/** MDC Ripple keyframes are split into their own file so that _mixins.scss can rely on them. */
+@keyframes mdc-ripple-fg-radius-in {
+  from {
+    -webkit-transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);
+            transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);
+    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+  to {
+    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));
+            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); } }
+
+@keyframes mdc-ripple-fg-opacity-in {
+  from {
+    opacity: 0;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear; }
+  to {
+    opacity: 1; } }
+
+@keyframes mdc-ripple-fg-opacity-out {
+  from {
+    opacity: 1;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear; }
+  to {
+    opacity: 0; } }
+
+nav.pager {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.47);
+  margin-right: -22px; }
+  nav.pager a {
+    width: 56px;
+    height: 56px;
+    line-height: 56px;
+    display: block;
+    color: inherit;
+    --mdc-ripple-surface-width: 0;
+    --mdc-ripple-surface-height: 0;
+    --mdc-ripple-fg-size: 0;
+    --mdc-ripple-left: 0;
+    --mdc-ripple-top: 0;
+    --mdc-ripple-fg-scale: 1;
+    --mdc-ripple-fg-translate-end: 0;
+    --mdc-ripple-fg-translate-start: 0;
+    will-change: transform, opacity;
+    -webkit-tap-highlight-color: transparent; }
+    nav.pager a:not(.mdc-ripple-upgraded):hover::before, nav.pager a:not(.mdc-ripple-upgraded):focus::before, nav.pager a:not(.mdc-ripple-upgraded):active::after {
+      transition-duration: 85ms;
+      opacity: .6; }
+    nav.pager a::before {
+      background-color: rgba(0, 0, 0, 0.06);
+      position: absolute;
+      top: calc(50% - 50%);
+      left: calc(50% - 50%);
+      width: 100%;
+      height: 100%;
+      transition: opacity 250ms linear;
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+      content: ""; }
+    nav.pager a.mdc-ripple-upgraded::before {
+      top: calc(50% - 50%);
+      left: calc(50% - 50%);
+      width: 100%;
+      height: 100%;
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
+              transform: scale(var(--mdc-ripple-fg-scale, 0)); }
+    nav.pager a.mdc-ripple-upgraded--background-focused::before {
+      opacity: .99999; }
+    nav.pager a.mdc-ripple-upgraded--background-active-fill::before {
+      transition-duration: 120ms;
+      opacity: 1; }
+    nav.pager a.mdc-ripple-upgraded--unbounded::before {
+      top: calc(50% - 25%);
+      top: var(--mdc-ripple-top, calc(50% - 25%));
+      left: calc(50% - 25%);
+      left: var(--mdc-ripple-left, calc(50% - 25%));
+      width: 50%;
+      width: var(--mdc-ripple-fg-size, 50%);
+      height: 50%;
+      height: var(--mdc-ripple-fg-size, 50%);
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
+              transform: scale(var(--mdc-ripple-fg-scale, 0)); }
+    nav.pager a::after {
+      background-color: rgba(255, 64, 129, 0.06);
+      position: absolute;
+      top: calc(50% - 50%);
+      left: calc(50% - 50%);
+      width: 100%;
+      height: 100%;
+      transition: opacity 250ms linear;
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+      content: ""; }
+      @supports (background-color: color(green a(10%))) {
+        nav.pager a::after {
+          background-color: color(var(--mdc-theme-accent, #ff4081) a(6%)); } }
+    nav.pager a.mdc-ripple-upgraded::after {
+      top: 0;
+      left: 0;
+      width: 50%;
+      width: var(--mdc-ripple-fg-size, 50%);
+      height: 50%;
+      height: var(--mdc-ripple-fg-size, 50%);
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      -webkit-transform-origin: center center;
+              transform-origin: center center;
+      opacity: 0; }
+    nav.pager a:not(.mdc-ripple-upgraded--unbounded)::after {
+      -webkit-transform-origin: center center;
+              transform-origin: center center; }
+    nav.pager a.mdc-ripple-upgraded--unbounded::after {
+      top: 0;
+      top: var(--mdc-ripple-top, 0);
+      left: 0;
+      left: var(--mdc-ripple-left, 0);
+      width: 50%;
+      width: var(--mdc-ripple-fg-size, 50%);
+      height: 50%;
+      height: var(--mdc-ripple-fg-size, 50%);
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      -webkit-transform-origin: center center;
+              transform-origin: center center; }
+    nav.pager a.mdc-ripple-upgraded--foreground-activation::after {
+      -webkit-animation: 300ms mdc-ripple-fg-radius-in forwards, 83ms mdc-ripple-fg-opacity-in forwards;
+              animation: 300ms mdc-ripple-fg-radius-in forwards, 83ms mdc-ripple-fg-opacity-in forwards; }
+    nav.pager a.mdc-ripple-upgraded--foreground-deactivation::after {
+      -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));
+              transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));
+      -webkit-animation: 250ms mdc-ripple-fg-opacity-out;
+              animation: 250ms mdc-ripple-fg-opacity-out; }
+  nav.pager .pager__item {
+    text-align: center;
+    font-weight: 700;
+    line-height: 48px; }
+    nav.pager .pager__item.is-active, nav.pager .pager__item.pager__item--icon {
+      color: rgba(0, 0, 0, 0.87); }
+    nav.pager .pager__item.page__item--inactive {
+      color: rgba(0, 0, 0, 0.33); }
+  nav.pager span {
+    line-height: inherit; }
+
 .mdc-select select {
   display: none; }
 
-/**
- * The css property used for elevation. In most cases this should not be changed. It is exposed
- * as a variable for abstraction / easy use when needing to reference the property directly, for
- * example in a `will-change` rule.
- */
-/**
- * The default duration value for elevation transitions.
- */
-/**
- * The default easing value for elevation transitions.
- */
-/**
- * Applies the correct css rules to an element to give it the elevation specified by $z-value.
- * The $z-value must be between 0 and 24.
- */
-/**
- * Returns a string that can be used as the value for a `transition` property for elevation.
- * Calling this function directly is useful in situations where a component needs to transition
- * more than one property.
- *
- * ```scss
- * .foo {
- *   transition: mdc-elevation-transition-rule(), opacity 100ms ease;
- *   will-change: $mdc-elevation-property, opacity;
- * }
- * ```
- */
-/**
- * Applies the correct css rules needed to have an element transition between elevations.
- * This mixin should be applied to elements whose elevation values will change depending on their
- * context (e.g. when active or disabled).
- */
 table {
   position: relative;
   border-collapse: collapse;
   font-size: 13px;
   background-color: #FFFFFF;
   width: 100%;
-  margin-bottom: 20px; }
+  font-weight: 400; }
   table thead {
     font-size: 13px;
     padding-bottom: 3px; }
@@ -624,7 +1016,8 @@ table {
   table .dropbutton-wrapper {
     margin-right: -10px; }
   table th.views-field-operations {
-    font-size: 0; }
+    font-size: 0;
+    width: 48px; }
 
 .mdl-data-table__select {
   width: 16px; }
@@ -641,33 +1034,6 @@ table {
 
 form.vbo-hide .form-wrapper {
   display: none; }
-
-form.vbo-elevated > .form-wrapper {
-  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-  padding: 20px;
-  background: #eeeeee;
-  z-index: 501;
-  position: fixed;
-  margin-top: -130px; }
-
-nav.pager {
-  text-align: right;
-  padding: 0 24px;
-  height: 56px;
-  line-height: 56px;
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.47); }
-  nav.pager a {
-    color: inherit; }
-  nav.pager .pager__item {
-    width: 24px;
-    display: inline-block;
-    text-align: center;
-    font-weight: 700; }
-    nav.pager .pager__item.is-active, nav.pager .pager__item.pager__item--icon {
-      color: rgba(0, 0, 0, 0.87); }
-    nav.pager .pager__item.page__item--inactive {
-      color: rgba(0, 0, 0, 0.33); }
 
 a {
   color: #0d47a1;
@@ -692,26 +1058,107 @@ p a, .has-styled-links a {
   -webkit-animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
           animation-timing-function: cubic-bezier(0.4, 0, 1, 1); }
 
-form.views-exposed-form .mdc-icon-toggle {
-  float: right; }
+/*
+  Precomputed linear color channel values, for use in contrast calculations.
+  See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
 
-form.views-exposed-form .toggle-form {
-  max-height: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
-  border-radius: 3px;
-  -webkit-animation: max-height 175ms cubic-bezier(0, 0, 0.2, 1);
-          animation: max-height 175ms cubic-bezier(0, 0, 0.2, 1); }
-  form.views-exposed-form .toggle-form.toggle-form--show {
-    max-height: 500px;
-    height: auto;
-    padding: 0 24px; }
-  form.views-exposed-form .toggle-form > div {
-    margin-right: 10px; }
+  Algorithm, for c in 0 to 255:
+  f(c) {
+    c = c / 255;
+    return c < 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  }
+
+  This lookup table is needed since there is no `pow` in SASS.
+*/
+/**
+ * Calculate the luminance for a color.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Calculate the contrast ratio between two colors.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Determine whether to use dark or light text on top of given color.
+ * Returns "dark" for dark text and "light" for light text.
+ */
+/*
+  Main theme colors.
+  If you're a user customizing your color scheme in SASS, these are probably the only variables you need to change.
+*/
+/* Indigo 500 */
+/* Pink A200 */
+/* White */
+/* Which set of text colors to use for each main theme color (light or dark) */
+/* Text colors according to light vs dark and text type */
+/* Primary text colors for each of the theme colors */
+/**
+ * Applies the correct theme color style to the specified property.
+ * $property is typically color or background-color, but can be any CSS property that accepts color values.
+ * $style should be one of the map keys in $mdc-theme-property-values (_variables.scss).
+ */
+/**
+ * Creates a rule to be used in MDC-Web components for dark theming, and applies the provided contents.
+ * Should provide the $root-selector option if applied to anything other than the root selector.
+ * When used with a modifier class, provide a second argument of `true` for the $compound parameter
+ * to specify that this should be attached as a compound class.
+ *
+ * Usage example:
+ *
+ * ```scss
+ * .mdc-foo {
+ *   color: black;
+ *
+ *   @include mdc-theme-dark {
+ *     color: white;
+ *   }
+ *
+ *   &__bar {
+ *     background: black;
+ *
+ *     @include mdc-theme-dark(".mdc-foo") {
+ *       background: white;
+ *     }
+ *   }
+ * }
+ *
+ * .mdc-foo--disabled {
+ *   opacity: .38;
+ *
+ *   @include mdc-theme-dark(".mdc-foo", true) {
+ *     opacity: .5;
+ *   }
+ * }
+ * ```
+ */
+form.views-exposed-form {
+  min-height: 72px;
+  position: relative;
+  z-index: 1;
+  background-color: #FFFFFF; }
+  form.views-exposed-form.activated {
+    display: none; }
+  form.views-exposed-form .mdc-icon-toggle {
+    position: absolute;
+    right: -12px;
+    bottom: 0;
+    z-index: 2; }
+  form.views-exposed-form .toggle-form {
+    max-height: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+    border-radius: 3px;
+    -webkit-animation: max-height 175ms cubic-bezier(0, 0, 0.2, 1);
+            animation: max-height 175ms cubic-bezier(0, 0, 0.2, 1); }
+    form.views-exposed-form .toggle-form.toggle-form--show {
+      max-height: 500px;
+      height: auto; }
+    form.views-exposed-form .toggle-form > div {
+      margin-right: 10px; }

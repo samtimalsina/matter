@@ -10,19 +10,21 @@
  * - empty: Text to display if there are no links.
  */
 #}
-<h2>{{ title }}</h2>
-<p>{{ description }}</p>
+<div class="typography">
+  <h2>{{ title }}</h2>
+  <p>{{ description }}</p>
 
-{% if links %}
+  {% if links %}
 
-    <ul class="mdc-list">
+    <ul class="">
       {% for link in links %}
-        <li class="mdc-list-item">
+        <li class="">
           <span class="">{{ link }}</span>
         </li>
       {% endfor %}
     </ul>
 
-{% else %}
-  <p>{{ empty }}</p>
-{% endif %}
+  {% else %}
+    <p>{{ empty }}</p>
+  {% endif %}
+</div>
