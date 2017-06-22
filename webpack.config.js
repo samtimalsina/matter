@@ -105,12 +105,10 @@ module.exports = [
   {
     name: 'css',
     entry: {
-      // 'material-components-web': [
-      //   path.resolve(node, "material-components-web/material-components-web.scss"),
-      // ],
-      matter: [
-        path.resolve('./scss/matter.scss'),
-      ]
+      'jquery.ui/core': [path.resolve('./scss/jquery.ui/core.scss')],
+      'jquery.ui/theme': [path.resolve('./scss/jquery.ui/theme.scss')],
+      'jquery.ui/dialog': [path.resolve('./scss/jquery.ui/dialog.scss')],
+      matter: [path.resolve('./scss/matter.scss')]
     },
     output: {
       path: CSS_PATH,

@@ -124,6 +124,10 @@
       FormWrapper.classList.toggle('toggle-form--show', detail.isOn);
     });
   }
+
+  window.addEventListener("dialog:aftercreate", event => {
+    mdc.autoInit();
+  });
 })(window.mdc, Drupal, drupalSettings);
 
 /***/ })

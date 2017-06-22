@@ -1,0 +1,91 @@
+@import "~@material/animation/functions";
+@import "~@material/elevation/mixins";
+@import "~@material/rtl/mixins";
+@import "~@material/theme/mixins";
+@import "~@material/typography/mixins";
+@import "~@material/typography/variables";
+
+$mdc-dialog-dark-theme-bg-color: #303030 !default;
+
+:root {
+  --mdc-dialog-dark-theme-bg-color: $mdc-dialog-dark-theme-bg-color;
+}
+
+// postcss-bem-linter: define dialog
+
+.ui-dialog {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  z-index: -1;
+  flex-direction: column;
+  @include mdc-elevation(24);
+  width: calc(100% - 30px);
+  min-width: 640px;
+  max-width: 865px;
+  transition: mdc-animation-enter(opacity, 120ms), mdc-animation-enter(transform, 120ms);
+  border-radius: 2px;
+
+  .ui-dialog-titlebar {
+    display: flex;
+    align-items: center;
+    padding: 24px 24px 0;
+
+    &__empty {
+      padding: 0;
+    }
+
+    @include mdc-rtl(".mdc-dialog") {
+      text-align: right;
+    }
+
+    .ui-dialog-title {
+      flex: 1;
+      margin: 0;
+    }
+  }
+
+  .ui-dialog-content {
+    margin-top: 20px;
+    padding: 0 24px 24px;
+
+    @include mdc-theme-prop(color, text-secondary-on-light);
+
+    @include mdc-theme-dark(".mdc-dialog", true) {
+      @include mdc-theme-prop(color, text-secondary-on-dark);
+    }
+
+    @include mdc-typography(body1);
+
+    &--scrollable {
+      max-height: 195px;
+      border-top: 1px solid rgba(0, 0, 0, .1);
+      border-bottom: 1px solid rgba(0, 0, 0, .1);
+      overflow-y: scroll;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  .ui-dialog-buttonpane {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 8px;
+  }
+
+  // TODO: Replace with breakpoint variable
+  @media (max-width: 640px) {
+    min-width: 280px;
+
+    &__surface {
+      min-width: 280px;
+    }
+
+    &__body {
+      line-height: 24px;
+    }
+  }
+}
+

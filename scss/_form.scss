@@ -1,7 +1,3 @@
-.mdc-form-field {
-  margin: 13px 0;
-}
-
 .vertical-tabs__pane {
   padding: 20px;
 }
@@ -16,4 +12,17 @@
   .form-actions {
     margin-left: 10px;
   }
+}
+
+.mdc-checkbox, .mdc-radio {
+  margin-left: -10px;
+}
+
+input[type="file"], input.form-file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }

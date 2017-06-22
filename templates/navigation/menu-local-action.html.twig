@@ -12,8 +12,8 @@
 #}
 {% import _self as local_action %}
 
-{{ link(local_action.iconize_text(link['#title']), link['#url'], { 'class':['mdc-button mdc-button--raised mdc-button--dense mdc-button--accent']}) }}
+{{ link(local_action.iconize_text(link['#title']), link['#url'], { 'class':['mdc-button mdc-button--raised mdc-button--dense mdc-button--accent'], 'role': 'button'}) }}
 
 {% macro iconize_text(text) %}
-  <span class="material-icons">add</span> {{ text }}
+  <span class="material-icons" role="presentation">add</span> {{ text }}
 {% endmacro %}

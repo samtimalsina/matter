@@ -27,6 +27,16 @@ libraries-override:
   contextual/drupal.contextual-links: false
   core/drupal.dropbutton: false
   core/drupal.tableselect: matter/drupal.tableselect
+  core/jquery.ui:
+    css:
+      component:
+        assets/vendor/jquery.ui/themes/base/core.css: css/jquery.ui/core.css
+      theme:
+        assets/vendor/jquery.ui/themes/base/theme.css: css/jquery.ui/theme.css
+  core/jquery.ui.dialog:
+    css:
+      component:
+        assets/vendor/jquery.ui/themes/base/dialog.css: css/jquery.ui/dialog.css
   system/base:
     css:
       component:

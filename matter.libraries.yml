@@ -32,3 +32,18 @@ drupal.tabledrag:
 drupal.tableselect:
   js:
     js/misc/tableselect.js: {}
+
+#jquery.ui.dialog:
+#  js:
+#    js/jquery.ui/dialog.js: {}
+#  css:
+#    component:
+#      css/jquery.ui/dialog.css: {}
+#  dependencies:
+#    - core/jquery.ui
+#    - core/jquery.ui.widget
+#    - core/jquery.ui.button
+#    - core/jquery.ui.draggable
+#    - core/jquery.ui.mouse
+#    - core/jquery.ui.position
+#    - core/jquery.ui.resizable

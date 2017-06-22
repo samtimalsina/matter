@@ -49,4 +49,8 @@
     });
   }
 
+  window.addEventListener("dialog:aftercreate", (event) => {
+    mdc.autoInit();
+  });
+
 })(window.mdc, Drupal, drupalSettings);
